@@ -1,0 +1,41 @@
+﻿<Window x:Class="UIVisionHealthAssistant.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UIVisionHealthAssistant"
+        xmlns:vm="clr-namespace:UIVisionHealthAssistant.ViewModel"
+        mc:Ignorable="d"
+        Height="400" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None">
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="pack://application:,,,/UIVisionHealthAssistant;component/Styles/VHAStyles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+    <Window.DataContext>
+        <vm:MainViewModel/>
+    </Window.DataContext>
+
+    <DockPanel>
+        <!-- Navigation menu area -->
+        <StackPanel Style="{StaticResource NavMenuStyle}" Width="200" Orientation="Vertical" >
+            <StackPanel.Resources>
+                <Style BasedOn="{StaticResource NavBtnStyle}" TargetType="Button"/>
+            </StackPanel.Resources>
+            <Button Content="News"/>
+            <Button Content="Break timer"/>
+            <Button Content="Eye exercises"/>
+            <Button Content="Settings"/>
+            <Button Content="About"/>
+            <Button Content="Exit"/>
+        </StackPanel>
+        
+        <!-- Content area -->
+        <UserControl DockPanel.Dock="Right">
+            
+        </UserControl>
+        
+    </DockPanel>
+</Window>
