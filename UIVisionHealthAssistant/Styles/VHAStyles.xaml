@@ -5,7 +5,7 @@
         <Setter Property="OverridesDefaultStyle" Value="True"/>
         <Setter Property="Width" Value="200"/>
         <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
         <Setter Property="Padding" Value="15"/>
         <Setter Property="Background" Value="#490404"/>
         <Setter Property="FontSize" Value="15"/>
@@ -14,9 +14,8 @@
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="Button">
-                    <Border Name="border" Padding="60,10,0,10"  Background="{TemplateBinding Background}">
+                    <Border Name="border" Padding="10,10,0,10"  Background="{TemplateBinding Background}">
                         <ContentControl Name="content" HorizontalContentAlignment="Center" Content="{TemplateBinding Content}"/>
-                        
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">

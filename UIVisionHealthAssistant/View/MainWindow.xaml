@@ -24,12 +24,42 @@
             <StackPanel.Resources>
                 <Style BasedOn="{StaticResource NavBtnStyle}" TargetType="Button"/>
             </StackPanel.Resources>
-            <Button Content="News"/>
-            <Button Content="Break timer"/>
-            <Button Content="Eye exercises"/>
-            <Button Content="Settings"/>
-            <Button Content="About"/>
-            <Button Content="Exit"/>
+            <Button>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Resources/Icons/newsIcon.png"/>
+                    <TextBlock Text="News" Margin="15,0,0,0"/>
+                </StackPanel>
+            </Button>
+            <Button>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Resources/Icons/breakTimerIcon.png"/>
+                    <TextBlock Text="Break timer" Margin="15,0,0,0"/>
+                </StackPanel>
+            </Button>
+            <Button>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Resources/Icons/eyeIcon.png"/>
+                    <TextBlock Text="Eye exercises" Margin="15,0,0,0"/>
+                </StackPanel>
+            </Button>
+            <Button>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Resources/Icons/settingsIcon.png"/>
+                    <TextBlock Text="Settings" Margin="15,0,0,0"/>
+                </StackPanel>
+            </Button>
+            <Button>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Resources/Icons/aboutIcon.png"/>
+                    <TextBlock Text="About" Margin="15,0,0,0"/>
+                </StackPanel>
+            </Button>
+            <Button>
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Resources/Icons/exitIcon.png"/>
+                    <TextBlock Text="Exit" Margin="15,0,0,0"/>
+                </StackPanel>
+            </Button>
         </StackPanel>
         
         <!-- Content area -->
