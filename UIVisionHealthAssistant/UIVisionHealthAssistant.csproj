@@ -56,10 +56,42 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ViewModel\NewsViewModel.cs" />
+    <Compile Include="ViewModel\SettingsViewModel.cs" />
+    <Compile Include="ViewModel\AboutViewModel.cs" />
+    <Compile Include="View\AboutView.xaml.cs">
+      <DependentUpon>AboutView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\NewsView.xaml.cs">
+      <DependentUpon>NewsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SetttingsView.xaml.cs">
+      <DependentUpon>SetttingsView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="View\AboutView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\NewsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SetttingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Resource Include="Styles\VHAStyles.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Resource>
+    <Page Include="View\BreakTimerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\EyeExercisesView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -69,8 +101,16 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Helper\RelayCommand.cs" />
+    <Compile Include="ViewModel\BreakTimerViewModel.cs" />
+    <Compile Include="ViewModel\EyeExercisesViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
+    <Compile Include="View\BreakTimerView.xaml.cs">
+      <DependentUpon>BreakTimerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EyeExercisesView.xaml.cs">
+      <DependentUpon>EyeExercisesView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -125,6 +165,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Icons\newsIcon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\VisionHealthAssistant.Shared\VisionHealthAssistant.Shared.csproj">
+      <Project>{56448bd9-e841-4a02-bc34-fffdcb74922e}</Project>
+      <Name>VisionHealthAssistant.Shared</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
