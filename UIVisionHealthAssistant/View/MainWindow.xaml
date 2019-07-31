@@ -6,7 +6,7 @@
         xmlns:view="clr-namespace:UIVisionHealthAssistant.View"
         xmlns:vm="clr-namespace:UIVisionHealthAssistant.ViewModel"
         mc:Ignorable="d"
-      Height="400" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None">
+    x:Name="MainView"  Height="400" Width="800" WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None">
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
@@ -66,7 +66,7 @@
                     <TextBlock Text="About" Margin="15,0,0,0"/>
                 </StackPanel>
             </Button>
-            <Button Command="{Binding ExitCommand}">
+            <Button Command="{Binding ExitCommand}" CommandParameter="{Binding ElementName=MainView}">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/Icons/exitIcon.png"/>
                     <TextBlock Text="Exit" Margin="15,0,0,0"/>

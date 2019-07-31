@@ -92,15 +92,17 @@ namespace UIVisionHealthAssistant.ViewModel
         /// <summary>
         /// Closes the window associated with this view-model.
         /// </summary>
-        public void CloseWindow() {
-            Application.Current.Shutdown();
+        public void CloseWindow(ICloseable window) {
+            if (window != null) {
+                window.Close();
+            }
         }
 
         /// <summary>
         /// Initializes commands.
         /// </summary>
         public void InitializeCommands() {
-            ExitCommand = new RelayCommand(execute => CloseWindow());
+            ExitCommand = new RelayCommand(p => CloseWindow((ICloseable)p), p => true);
             ChangePageCommand = new RelayCommand(p => ChangeViewModel(p as string),p=> true);
         }
 
