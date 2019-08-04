@@ -36,6 +36,7 @@
             <StackPanel.Resources>
                 <Style BasedOn="{StaticResource NavBtnStyle}" TargetType="Button"/>
             </StackPanel.Resources>
+            <Image Width="150" Height="70" HorizontalAlignment="Left" Margin="-7,2,0,0" Source="/Resources/Logo/VHALogo.png"/>
             <Button Command="{Binding ChangePageCommand}" CommandParameter="News" IsEnabled="{Binding PageState[0]}">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/Icons/newsIcon.png"/>
