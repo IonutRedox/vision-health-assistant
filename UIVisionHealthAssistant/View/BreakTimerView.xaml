@@ -3,10 +3,63 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:vm ="clr-namespace:UIVisionHealthAssistant.ViewModel"
+             xmlns:controls="clr-namespace:UIVisionHealthAssistant.CustomControls"
              mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
-    <Grid>
+             d:DesignHeight="450" d:DesignWidth="800" Style="{StaticResource PageStyle}">
 
-    </Grid>
+    <StackPanel>
+        <StackPanel.Resources>
+            <Style TargetType="{x:Type controls:ImageButton}" BasedOn="{StaticResource UpDownButtonStyle}"/>
+        </StackPanel.Resources>
+        <Label Content="Break timer" Style="{StaticResource PageTitleStyle}"/>
+  
+        <TextBlock Text="{Binding Info}"/>
+
+        
+        <Label Content="Break frequency" />
+        <StackPanel Orientation="Horizontal">
+            <TextBox Text="{Binding Frequency}" Width="40" Height="20" HorizontalContentAlignment="Right" />
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                <controls:ImageButton Image="/Resources/Icons/UpArrow.png" Command="{Binding IncreaseFrequency}"/>
+                <controls:ImageButton Image="/Resources/Icons/DownArrow.png"  Command="{Binding DecreaseFrequency}"/>
+            </StackPanel>
+        </StackPanel>
+
+        <Label Content="Break length"/>
+        <StackPanel Orientation="Horizontal">
+            <TextBox Text="{Binding Frequency}" Width="40" Height="20" HorizontalContentAlignment="Right"/>
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                <controls:ImageButton Image="/Resources/Icons/UpArrow.png" Command="{Binding IncreaseLength}"/>
+                <controls:ImageButton Image="/Resources/Icons/DownArrow.png"  Command="{Binding DecreaseLength}"/>
+            </StackPanel>
+        </StackPanel>
+
+        <Label Content="Break message"/>
+        <TextBox Text="{Binding BreakMessage}"/>
+
+        <StackPanel Orientation="Horizontal">
+            <Label Content="Play sound"/>
+            <CheckBox IsChecked="{Binding IsPlaySoundActive}" Margin="20,0,0,0"/>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal">
+            <Label Content="Idle reset"/>
+            <CheckBox IsChecked="{Binding IsIdleResetActive}" Margin="30,0,0,0"/>
+        </StackPanel>
+
+        <Label Content="Reset when idle for"/>
+        <StackPanel Orientation="Horizontal">
+            <TextBox Text="{Binding IdleResetTime}" Width="40" Height="20" HorizontalContentAlignment="Right" />
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                <controls:ImageButton Image="/Resources/Icons/UpArrow.png" Command="{Binding IncreaseIdleResetTime}"/>
+                <controls:ImageButton Image="/Resources/Icons/DownArrow.png" Command="{Binding DecreaseIdleResetTime}"/>
+            </StackPanel>
+        </StackPanel>
+
+        <StackPanel Orientation="Horizontal" Margin="20,15,0,0">
+            <Button Content="Start" Command="{Binding StartCommand}" Margin="0,0,15,0"/>
+            <Button Content="Pause" Command="{Binding PauseCommand}" Margin="0,0,15,0"/>
+            <Button Content="End" Command="{Binding EndCommand}"/>
+        </StackPanel>
+    </StackPanel>
 </UserControl>
