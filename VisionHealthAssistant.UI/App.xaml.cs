@@ -1,7 +1,7 @@
 ﻿using System.Windows;
-using UIVisionHealthAssistant.ViewModel;
+using VisionHealthAssistant.UI.ViewModel;
 
-namespace UIVisionHealthAssistant
+namespace VisionHealthAssistant.UI
 {
     /// <summary>
     /// Interaction logic for App.xaml

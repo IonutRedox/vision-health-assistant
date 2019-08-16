@@ -1,6 +1,6 @@
 ﻿using VisionHealthAssistant.Shared;
 
-namespace UIVisionHealthAssistant.ViewModel
+namespace VisionHealthAssistant.UI.ViewModel
 {
     public class EyeExercisesViewModel : ViewModelBase
     {

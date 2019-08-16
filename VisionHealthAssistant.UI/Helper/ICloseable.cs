@@ -1,4 +1,4 @@
-﻿namespace UIVisionHealthAssistant.Helper
+﻿namespace VisionHealthAssistant.UI.Helper
 {
     public interface ICloseable
     {

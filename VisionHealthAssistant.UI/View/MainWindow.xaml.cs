@@ -1,7 +1,7 @@
 ﻿using System.Windows;
-using UIVisionHealthAssistant.Helper;
+using VisionHealthAssistant.UI.Helper;
 
-namespace UIVisionHealthAssistant
+namespace VisionHealthAssistant.UI
 {
     /// <summary>
     /// Interaction logic for MainWindow.xaml

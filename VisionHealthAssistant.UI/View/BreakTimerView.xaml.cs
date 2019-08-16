@@ -13,7 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace UIVisionHealthAssistant.View
+namespace VisionHealthAssistant.UI.View
 {
     /// <summary>
     /// Interaction logic for BreakTimerView.xaml

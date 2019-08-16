@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace UIVisionHealthAssistant.Helper
+namespace VisionHealthAssistant.UI.Helper
 {
     public class RelayCommand: ICommand
     {

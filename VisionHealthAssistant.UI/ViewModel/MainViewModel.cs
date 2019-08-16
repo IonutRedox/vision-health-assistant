@@ -4,10 +4,10 @@ using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
 using System.Windows;
-using UIVisionHealthAssistant.Helper;
+using VisionHealthAssistant.UI.Helper;
 using VisionHealthAssistant.Shared;
 
-namespace UIVisionHealthAssistant.ViewModel
+namespace VisionHealthAssistant.UI.ViewModel
 {
     public class MainViewModel : ViewModelBase
     {
@@ -114,7 +114,7 @@ namespace UIVisionHealthAssistant.ViewModel
         private ViewModelBase GetViewModel(string pageType)
         {
             object viewModel;
-            const string Namespace = "UIVisionHealthAssistant.ViewModel.";
+            const string Namespace = "VisionHealthAssistant.UI.ViewModel.";
             const string ViewModel = "ViewModel";
             string ViewModelClass = string.Join(string.Empty,Namespace, pageType, ViewModel);
             Type type = Assembly.GetExecutingAssembly().GetType(ViewModelClass);
