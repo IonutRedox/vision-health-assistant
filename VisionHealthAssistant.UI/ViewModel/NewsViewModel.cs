@@ -11,6 +11,18 @@ namespace VisionHealthAssistant.UI.ViewModel
             Type = PageType.News;
         }
 
-        #endregion  
+        #endregion
+
+        #region Methods
+
+        /// <summary>
+        /// Initializes commands.
+        /// </summary>
+        protected override void InitializeCommands()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        #endregion
     }
 }

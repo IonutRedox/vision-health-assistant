@@ -12,5 +12,17 @@ namespace VisionHealthAssistant.UI.ViewModel
         }
 
         #endregion
+
+        #region Methods
+
+        /// <summary>
+        /// Initializes commands.
+        /// </summary>
+        protected override void InitializeCommands()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        #endregion
     }
 }

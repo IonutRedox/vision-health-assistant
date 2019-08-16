@@ -4,7 +4,7 @@ using VisionHealthAssistant.Shared;
 
 namespace VisionHealthAssistant.UI.ViewModel
 {
-    public class ViewModelBase: INotifyPropertyChanged
+    public abstract class ViewModelBase: INotifyPropertyChanged
     {
         #region Properties
 
@@ -12,6 +12,15 @@ namespace VisionHealthAssistant.UI.ViewModel
         /// Gets the type of the page.
         /// </summary>
         public PageType Type { get; protected set; }
+
+        #endregion
+
+        #region Methods
+
+        /// <summary>
+        /// Initializes commands.
+        /// </summary>
+        protected abstract void InitializeCommands();
 
         #endregion
 

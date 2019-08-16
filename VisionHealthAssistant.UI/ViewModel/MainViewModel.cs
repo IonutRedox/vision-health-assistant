@@ -3,20 +3,20 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
-using System.Windows;
-using VisionHealthAssistant.UI.Helper;
 using VisionHealthAssistant.Shared;
+using VisionHealthAssistant.UI.Helper;
 
 namespace VisionHealthAssistant.UI.ViewModel
 {
     public class MainViewModel : ViewModelBase
     {
         #region Constructor
-        
+
         /// <summary>
         /// Parameterless constructor for the main window.
         /// </summary>
-        public MainViewModel() {
+        public MainViewModel()
+        {
             InitializeCommands();
             InitializePageStates();
             _pageViewModels = new List<ViewModelBase> {
@@ -44,10 +44,11 @@ namespace VisionHealthAssistant.UI.ViewModel
         /// <summary>
         /// Current view model.
         /// </summary>
-        public ViewModelBase CurrentPageViewModel {
+        public ViewModelBase CurrentPageViewModel
+        {
             get { return _currentPageViewModel; }
             set {
-                if (_currentPageViewModel != value) {
+                if ( _currentPageViewModel != value ) {
                     _currentPageViewModel = value;
                     OnPropertyChanged();
                 }
@@ -76,24 +77,26 @@ namespace VisionHealthAssistant.UI.ViewModel
         #endregion
 
         #region Methods
+
         /// <summary>
         /// Initializes access to the pages.
         /// </summary>
         private void InitializePageStates()
         {
             PageState = new ObservableCollection<bool>();
-            PageState.Insert((int)PageType.News, false);
-            PageState.Insert((int)PageType.BreakTimer, true);
-            PageState.Insert((int)PageType.EyeExercises, true);
-            PageState.Insert((int)PageType.Settings, true);
-            PageState.Insert((int)PageType.About, true);
+            PageState.Insert((int)PageType.News,false);
+            PageState.Insert((int)PageType.BreakTimer,true);
+            PageState.Insert((int)PageType.EyeExercises,true);
+            PageState.Insert((int)PageType.Settings,true);
+            PageState.Insert((int)PageType.About,true);
         }
 
         /// <summary>
         /// Closes the window associated with this view-model.
         /// </summary>
-        public void CloseWindow(ICloseable window) {
-            if (window != null) {
+        public void CloseWindow(ICloseable window)
+        {
+            if ( window != null ) {
                 window.Close();
             }
         }
@@ -101,9 +104,10 @@ namespace VisionHealthAssistant.UI.ViewModel
         /// <summary>
         /// Initializes commands.
         /// </summary>
-        public void InitializeCommands() {
-            ExitCommand = new RelayCommand(p => CloseWindow((ICloseable)p), p => true);
-            ChangePageCommand = new RelayCommand(p => ChangeViewModel(p as string),p=> true);
+        protected override void InitializeCommands()
+        {
+            ExitCommand = new RelayCommand(p => CloseWindow((ICloseable)p),p => true);
+            ChangePageCommand = new RelayCommand(p => ChangeViewModel(p as string),p => true);
         }
 
         /// <summary>
@@ -116,7 +120,7 @@ namespace VisionHealthAssistant.UI.ViewModel
             object viewModel;
             const string Namespace = "VisionHealthAssistant.UI.ViewModel.";
             const string ViewModel = "ViewModel";
-            string ViewModelClass = string.Join(string.Empty,Namespace, pageType, ViewModel);
+            string ViewModelClass = string.Join(string.Empty,Namespace,pageType,ViewModel);
             Type type = Assembly.GetExecutingAssembly().GetType(ViewModelClass);
             viewModel = Activator.CreateInstance(type);
             return viewModel as ViewModelBase;
@@ -129,7 +133,7 @@ namespace VisionHealthAssistant.UI.ViewModel
         private void ChangeViewModel(string targetPage)
         {
             ViewModelBase targetViewModel = GetViewModel(targetPage);
-            if(!_pageViewModels.Any(vm => vm.Type == targetViewModel.Type)) {
+            if ( !_pageViewModels.Any(vm => vm.Type == targetViewModel.Type) ) {
                 _pageViewModels.Add(targetViewModel);
             }
             PageType oldPageType = CurrentPageViewModel.Type;
