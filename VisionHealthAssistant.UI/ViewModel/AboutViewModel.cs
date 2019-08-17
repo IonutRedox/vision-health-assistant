@@ -8,7 +8,7 @@ namespace VisionHealthAssistant.UI.ViewModel
 
         public AboutViewModel()
         {
-            Type = PageType.About;
+            Type = Pages.About;
         }
 
         #endregion

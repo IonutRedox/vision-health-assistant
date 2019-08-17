@@ -1,6 +1,6 @@
 ﻿namespace VisionHealthAssistant.Shared
 {
-    public enum PageType
+    public enum Pages
     {
         News=0,
         BreakTimer=1,

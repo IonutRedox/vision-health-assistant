@@ -10,7 +10,7 @@ namespace VisionHealthAssistant.UI.ViewModel
 
         public BreakTimerViewModel()
         {
-            Type = PageType.BreakTimer;
+            Type = Pages.BreakTimer;
             InitializeCommands();
             BreakTimer = new BreakTimer {
                 Frequency = 0,

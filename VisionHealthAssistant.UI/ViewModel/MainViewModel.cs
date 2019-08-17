@@ -84,11 +84,11 @@ namespace VisionHealthAssistant.UI.ViewModel
         private void InitializePageStates()
         {
             PageState = new ObservableCollection<bool>();
-            PageState.Insert((int)PageType.News,false);
-            PageState.Insert((int)PageType.BreakTimer,true);
-            PageState.Insert((int)PageType.EyeExercises,true);
-            PageState.Insert((int)PageType.Settings,true);
-            PageState.Insert((int)PageType.About,true);
+            PageState.Insert((int)Pages.News,false);
+            PageState.Insert((int)Pages.BreakTimer,true);
+            PageState.Insert((int)Pages.EyeExercises,true);
+            PageState.Insert((int)Pages.Settings,true);
+            PageState.Insert((int)Pages.About,true);
         }
 
         /// <summary>
@@ -113,14 +113,14 @@ namespace VisionHealthAssistant.UI.ViewModel
         /// <summary>
         /// Get specific view model depending on page type.
         /// </summary>
-        /// <param name="pageType"></param>
+        /// <param name="Pages"></param>
         /// <returns></returns>
-        private ViewModelBase GetViewModel(string pageType)
+        private ViewModelBase GetViewModel(string Pages)
         {
             object viewModel;
             const string Namespace = "VisionHealthAssistant.UI.ViewModel.";
             const string ViewModel = "ViewModel";
-            string ViewModelClass = string.Join(string.Empty,Namespace,pageType,ViewModel);
+            string ViewModelClass = string.Join(string.Empty,Namespace,Pages,ViewModel);
             Type type = Assembly.GetExecutingAssembly().GetType(ViewModelClass);
             viewModel = Activator.CreateInstance(type);
             return viewModel as ViewModelBase;
@@ -136,10 +136,10 @@ namespace VisionHealthAssistant.UI.ViewModel
             if ( !_pageViewModels.Any(vm => vm.Type == targetViewModel.Type) ) {
                 _pageViewModels.Add(targetViewModel);
             }
-            PageType oldPageType = CurrentPageViewModel.Type;
-            PageType currentPageType = targetViewModel.Type;
-            PageState[(int)oldPageType] = true;
-            PageState[(int)currentPageType] = false;
+            Pages oldPages = CurrentPageViewModel.Type;
+            Pages currentPages = targetViewModel.Type;
+            PageState[(int)oldPages] = true;
+            PageState[(int)currentPages] = false;
             CurrentPageViewModel = _pageViewModels.First(vm => vm.Type == targetViewModel.Type);
         }
 

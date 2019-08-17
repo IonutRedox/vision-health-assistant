@@ -8,7 +8,7 @@ namespace VisionHealthAssistant.UI.ViewModel
 
         public EyeExercisesViewModel()
         {
-            Type = PageType.EyeExercises;
+            Type = Pages.EyeExercises;
         }
 
         #endregion

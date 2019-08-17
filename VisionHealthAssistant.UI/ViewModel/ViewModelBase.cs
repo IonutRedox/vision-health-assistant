@@ -11,7 +11,7 @@ namespace VisionHealthAssistant.UI.ViewModel
         /// <summary>
         /// Gets the type of the page.
         /// </summary>
-        public PageType Type { get; protected set; }
+        public Pages Type { get; protected set; }
 
         #endregion
 

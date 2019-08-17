@@ -8,7 +8,7 @@ namespace VisionHealthAssistant.UI.ViewModel
 
         public NewsViewModel()
         {
-            Type = PageType.News;
+            Type = Pages.News;
         }
 
         #endregion
