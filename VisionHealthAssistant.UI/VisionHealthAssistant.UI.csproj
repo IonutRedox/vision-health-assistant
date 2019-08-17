@@ -59,8 +59,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters\NumericTextBoxConverter.cs" />
     <Compile Include="CustomControls\ImageButton.cs" />
     <Compile Include="Helper\ICloseable.cs" />
+    <Compile Include="Helper\TextBoxHelper.cs" />
     <Compile Include="Model\BreakTimer.cs" />
     <Compile Include="ViewModel\NewsViewModel.cs" />
     <Compile Include="ViewModel\SettingsViewModel.cs" />

@@ -191,3 +191,4 @@ StyleCop.Cache
 bin
 obj
 /.vs/VisionHealthAssistant/v16/Server/sqlite3
+*.dtbcache

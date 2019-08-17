@@ -3,10 +3,14 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:helper="clr-namespace:VisionHealthAssistant.UI.Helper"
+             xmlns:converters="clr-namespace:VisionHealthAssistant.UI.Converters"
              xmlns:controls="clr-namespace:VisionHealthAssistant.UI.CustomControls"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800" Style="{StaticResource PageStyle}">
-
+    <UserControl.Resources>
+        <converters:NumericTextBoxConverter x:Key="NumericTextBoxConverter"/>
+    </UserControl.Resources>
     <StackPanel>
         <StackPanel.Resources>
             <Style TargetType="{x:Type controls:ImageButton}" BasedOn="{StaticResource UpDownButtonStyle}"/>
@@ -18,7 +22,7 @@
         
         <Label Content="Break frequency" />
         <StackPanel Orientation="Horizontal">
-            <TextBox Text="{Binding BreakTimer.Frequency,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Width="40" Height="20" HorizontalContentAlignment="Right" />
+            <TextBox Text="{Binding BreakTimer.Frequency,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,Converter={StaticResource NumericTextBoxConverter}}" Width="40" Height="20" helper:TextBoxHelper.OnlyInteger="True"  HorizontalContentAlignment="Right" />
             <StackPanel Orientation="Vertical" VerticalAlignment="Center">
                 <controls:ImageButton Image="/Resources/Icons/UpArrow.png" Command="{Binding IncreaseFrequencyCommand}"/>
                 <controls:ImageButton Image="/Resources/Icons/DownArrow.png"  Command="{Binding DecreaseFrequencyCommand}"/>
@@ -27,7 +31,7 @@
 
         <Label Content="Break length"/>
         <StackPanel Orientation="Horizontal">
-            <TextBox Text="{Binding BreakTimer.Length,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Width="40" Height="20" HorizontalContentAlignment="Right"/>
+            <TextBox Text="{Binding BreakTimer.Length,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,Converter={StaticResource NumericTextBoxConverter}}" Width="40" Height="20" helper:TextBoxHelper.OnlyInteger="True" HorizontalContentAlignment="Right"/>
             <StackPanel Orientation="Vertical" VerticalAlignment="Center">
                 <controls:ImageButton Image="/Resources/Icons/UpArrow.png" Command="{Binding IncreaseLengthCommand}"/>
                 <controls:ImageButton Image="/Resources/Icons/DownArrow.png"  Command="{Binding DecreaseLengthCommand}"/>
@@ -49,7 +53,7 @@
 
         <Label Content="Reset when idle for"/>
         <StackPanel Orientation="Horizontal">
-            <TextBox Text="{Binding BreakTimer.IdleResetTime,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Width="40" Height="20" HorizontalContentAlignment="Right" />
+            <TextBox Text="{Binding BreakTimer.IdleResetTime,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,Converter={StaticResource NumericTextBoxConverter}}" Width="40" Height="20" helper:TextBoxHelper.OnlyInteger="True" HorizontalContentAlignment="Right" />
             <StackPanel Orientation="Vertical" VerticalAlignment="Center">
                 <controls:ImageButton Image="/Resources/Icons/UpArrow.png" Command="{Binding IncreaseIdleResetTimeCommand}"/>
                 <controls:ImageButton Image="/Resources/Icons/DownArrow.png" Command="{Binding DecreaseIdleResetTimeCommand}"/>
