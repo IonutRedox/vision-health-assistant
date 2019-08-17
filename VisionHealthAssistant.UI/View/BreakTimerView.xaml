@@ -22,7 +22,7 @@
         
         <Label Content="Break frequency" />
         <StackPanel Orientation="Horizontal">
-            <TextBox Text="{Binding BreakTimer.Frequency,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,Converter={StaticResource NumericTextBoxConverter}}" Width="40" Height="20" helper:TextBoxHelper.OnlyInteger="True"  HorizontalContentAlignment="Right" />
+            <TextBox Text="{Binding BreakTimer.Frequency,UpdateSourceTrigger=PropertyChanged,Converter={StaticResource NumericTextBoxConverter}}" Width="40" Height="20" helper:TextBoxHelper.OnlyInteger="True"  HorizontalContentAlignment="Right" />
             <StackPanel Orientation="Vertical" VerticalAlignment="Center">
                 <controls:ImageButton Image="/Resources/Icons/UpArrow.png" Command="{Binding IncreaseFrequencyCommand}"/>
                 <controls:ImageButton Image="/Resources/Icons/DownArrow.png"  Command="{Binding DecreaseFrequencyCommand}"/>
@@ -31,7 +31,7 @@
 
         <Label Content="Break length"/>
         <StackPanel Orientation="Horizontal">
-            <TextBox Text="{Binding BreakTimer.Length,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,Converter={StaticResource NumericTextBoxConverter}}" Width="40" Height="20" helper:TextBoxHelper.OnlyInteger="True" HorizontalContentAlignment="Right"/>
+            <TextBox Text="{Binding BreakTimer.Length,UpdateSourceTrigger=PropertyChanged,Converter={StaticResource NumericTextBoxConverter}}" Width="40" Height="20" helper:TextBoxHelper.OnlyInteger="True" HorizontalContentAlignment="Right"/>
             <StackPanel Orientation="Vertical" VerticalAlignment="Center">
                 <controls:ImageButton Image="/Resources/Icons/UpArrow.png" Command="{Binding IncreaseLengthCommand}"/>
                 <controls:ImageButton Image="/Resources/Icons/DownArrow.png"  Command="{Binding DecreaseLengthCommand}"/>
@@ -39,7 +39,7 @@
         </StackPanel>
 
         <Label Content="Break message"/>
-        <TextBox Text="{Binding BreakTimer.Message,Mode=TwoWay}"/>
+        <TextBox Text="{Binding BreakTimer.Message}"/>
 
         <StackPanel Orientation="Horizontal">
             <Label Content="Play sound"/>
@@ -52,8 +52,8 @@
         </StackPanel>
 
         <Label Content="Reset when idle for"/>
-        <StackPanel Orientation="Horizontal">
-            <TextBox Text="{Binding BreakTimer.IdleResetTime,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,Converter={StaticResource NumericTextBoxConverter}}" Width="40" Height="20" helper:TextBoxHelper.OnlyInteger="True" HorizontalContentAlignment="Right" />
+        <StackPanel Orientation="Horizontal" IsEnabled="{Binding BreakTimer.IsIdleResetActive,Mode=OneWay}">
+            <TextBox Text="{Binding BreakTimer.IdleResetTime,UpdateSourceTrigger=PropertyChanged,Converter={StaticResource NumericTextBoxConverter}}" Width="40" Height="20" helper:TextBoxHelper.OnlyInteger="True" HorizontalContentAlignment="Right" />
             <StackPanel Orientation="Vertical" VerticalAlignment="Center">
                 <controls:ImageButton Image="/Resources/Icons/UpArrow.png" Command="{Binding IncreaseIdleResetTimeCommand}"/>
                 <controls:ImageButton Image="/Resources/Icons/DownArrow.png" Command="{Binding DecreaseIdleResetTimeCommand}"/>

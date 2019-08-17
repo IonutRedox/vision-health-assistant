@@ -133,6 +133,9 @@
                                 <Trigger Property="IsFocused" Value="false">
                                     <Setter Property="BorderBrush" TargetName="border" Value="#D6AEA9"/>
                                 </Trigger>
+                                <Trigger Property="IsEnabled" Value="False">
+                                    <Setter Property="Opacity" Value="0.7"/>
+                                </Trigger>
                             </ControlTemplate.Triggers>
                         </ControlTemplate>
                     </Setter.Value>
