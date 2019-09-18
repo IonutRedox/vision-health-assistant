@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Media;
 using System.Windows.Threading;
 using VisionHealthAssistant.Shared;
 using VisionHealthAssistant.UI.Helper;
@@ -16,6 +18,8 @@ namespace VisionHealthAssistant.UI.ViewModel
         private string _remainingTime;
         private bool _isNotRunning;
         private bool _isPaused;
+        private SoundPlayer _soundPlayer;
+        private string AlertSoundPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory,@"..\..\Resources\Sounds\BreakTimerAlert.wav");
 
         #endregion
 
@@ -31,6 +35,7 @@ namespace VisionHealthAssistant.UI.ViewModel
             InitializeTimer();
             BreakTimer = new BreakTimer { Frequency = 0,Length = 0,IdleResetTime = 0 };
             RemainingTime = BreakTimerHelper.GetFormattedTimeFromMinutes(BreakTimer.Frequency);
+            _soundPlayer = new SoundPlayer(AlertSoundPath);
             IsNotRunning = true;
         }
 
@@ -260,8 +265,20 @@ namespace VisionHealthAssistant.UI.ViewModel
         {
             RelaxationViewModel relaxationViewModel = new RelaxationViewModel(BreakTimer.Message,BreakTimer.Length);
             RelaxationView relaxationView = new RelaxationView { DataContext = relaxationViewModel };
+            PlaySound();
             if(relaxationView.ShowDialog() == true && !relaxationViewModel.IsManuallyStopped) {
                 StartTimer();
+            }
+            PlaySound();
+        }
+
+        /// <summary>
+        /// Gets notification when start/end relaxation.
+        /// </summary>
+        private void PlaySound()
+        {
+            if(BreakTimer.IsPlaySoundActive) {
+                _soundPlayer.Play();
             }
         }
 
