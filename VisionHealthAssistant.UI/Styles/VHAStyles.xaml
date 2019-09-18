@@ -1,92 +1,49 @@
 ﻿<ResourceDictionary xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
                     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
                     xmlns:controls="clr-namespace:VisionHealthAssistant.UI.CustomControls;assembly=VisionHealthAssistant.UI">
-    <Style x:Key="NavBtnStyle" TargetType="{x:Type Button}">
-        <Setter Property="OverridesDefaultStyle" Value="True"/>
-        <Setter Property="Width" Value="200"/>
-        <Setter Property="BorderThickness" Value="0"/>
-        <Setter Property="HorizontalContentAlignment" Value="Left"/>
-        <Setter Property="Padding" Value="15"/>
-        <Setter Property="Background" Value="#490404"/>
-        <Setter Property="FontSize" Value="15"/>
-        <Setter Property="Foreground" Value="#ead3dc"/>
-        <Setter Property="FontFamily" Value="Raleway"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="Button">
-                    <Border Name="border" Padding="10,10,0,10"  Background="{TemplateBinding Background}">
-                        <ContentControl Name="content" HorizontalContentAlignment="Center" Content="{TemplateBinding Content}"/>
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="#650E0E"/>
-                            <Setter Property="Foreground" Value="#fff4f4"/>
-                        </Trigger>
-                        <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="Background" Value="#490404"/>
-                            <Setter Property="Foreground" Value="#ead3dc"/>
-                        </Trigger>
-                        <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Background" Value="#600D0D"/>
-                            <Setter Property="Foreground" Value="#fff4f4"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
-    <Style x:Key="NavMenuStyle" TargetType="StackPanel">
-        <Setter Property="Background" Value="#490404"/>
-    </Style>
-   
-
-    <Style x:Key="UpDownButtonStyle" TargetType="{x:Type controls:ImageButton}">
-        <Setter Property="Padding" Value="0"/>
-        <Setter Property="Width" Value="10"/>
-        <Setter Property="Height" Value="10"/>
-        <Setter Property="ImageWidth" Value="7"/>
-        <Setter Property="ImageHeight" Value="7"/>
-        <Setter Property="HorizontalContentAlignment" Value="Center"/>
-        <Setter Property="VerticalContentAlignment" Value="Center"/>
-        <Setter Property="Template">
-            <Setter.Value>
-                <ControlTemplate TargetType="{x:Type controls:ImageButton}">
-                    <Border x:Name="border"
-                            BorderBrush="{TemplateBinding BorderBrush}"
-                            BorderThickness="{TemplateBinding BorderThickness}" 
-                            Background="{TemplateBinding Background}"
-                            SnapsToDevicePixels="true">
-                        <Image 
-                                   Source="{TemplateBinding Image}"
-                                   Width="{TemplateBinding ImageWidth}"
-                                   Height="{TemplateBinding ImageHeight}"
-                                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
-                                   SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
-                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
-                                   Grid.Column="1"/>
-                    </Border>
-                    <ControlTemplate.Triggers>
-                        <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Opacity" TargetName="border" Value="0.5"/>
-                        </Trigger>
-                        <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="Opacity" TargetName="border" Value="0.3"/>
-                        </Trigger>
-                        <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Opacity" TargetName="border" Value="0.3"/>
-                        </Trigger>
-                    </ControlTemplate.Triggers>
-                </ControlTemplate>
-            </Setter.Value>
-        </Setter>
-    </Style>
-
+    
+    <!--#region CommonPage-->
+    
     <Style x:Key="PageTitleStyle" TargetType="{x:Type Label}">
         <Setter Property="FontSize" Value="20"/>
         <Setter Property="HorizontalAlignment" Value="Left"/>
         <Setter Property="Padding" Value="0"/>
         <Setter Property="Margin" Value="20,10,0,0"/>
+    </Style>
+    
+    <Style x:Key="VHAButtonStyle" TargetType="{x:Type Button}">
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Background" Value="#C6463C"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="FontSize" Value="13"/>
+        <Setter Property="Width" Value="80"/>
+        <Setter Property="Height" Value="25"/>
+        <Setter Property="Foreground" Value="WhiteSmoke"/>
+        <Setter Property="FontFamily" Value="GUI"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Name="border"  CornerRadius="5"  Background="{TemplateBinding Background}">
+                        <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                            <ContentControl Name="content"  Content="{TemplateBinding Content}"/>
+                        </StackPanel>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#C55148"/>
+                            <Setter Property="Foreground" Value="White"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="#C85C54"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="#AF5F59"/>
+                            <Setter Property="Foreground" Value="LightGray"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
     </Style>
     
     <Style x:Key="PageStyle" TargetType="{x:Type UserControl}">
@@ -141,42 +98,132 @@
                     </Setter.Value>
                 </Setter>
             </Style>
-            
+
             <Style TargetType="{x:Type CheckBox}">
                 <Setter Property="VerticalAlignment" Value="Bottom"/>
             </Style>
             
-            <Style TargetType="{x:Type Button}">
-                <Setter Property="OverridesDefaultStyle" Value="True"/>
-                <Setter Property="Background" Value="#C6463C"/>
-                <Setter Property="BorderThickness" Value="0"/>
-                <Setter Property="FontSize" Value="13"/>
-                <Setter Property="Width" Value="80"/>
-                <Setter Property="Height" Value="25"/>
-                <Setter Property="Foreground" Value="WhiteSmoke"/>
-                <Setter Property="FontFamily" Value="GUI"/>
-                <Setter Property="Template">
-                    <Setter.Value>
-                        <ControlTemplate TargetType="Button">
-                            <Border Name="border"  CornerRadius="5"  Background="{TemplateBinding Background}">
-                                <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
-                                    <ContentControl Name="content"  Content="{TemplateBinding Content}"/>
-                                </StackPanel>
-                            </Border>
-                            <ControlTemplate.Triggers>
-                                <Trigger Property="IsMouseOver" Value="True">
-                                    <Setter Property="Background" Value="#C55148"/>
-                                    <Setter Property="Foreground" Value="White"/>
-                                </Trigger>
-                                <Trigger Property="IsPressed" Value="True">
-                                    <Setter Property="Background" Value="#C85C54"/>
-                                </Trigger>
-                            </ControlTemplate.Triggers>
-                        </ControlTemplate>
-                    </Setter.Value>
-                </Setter>
+            <Style TargetType="{x:Type Button}" BasedOn="{StaticResource VHAButtonStyle}"/>
+        </Style.Resources>
+    </Style>
+
+    <!--#endregion-->
+    
+    <!--#region MainWindow-->
+    
+    <Style x:Key="NavBtnStyle" TargetType="{x:Type Button}">
+        <Setter Property="OverridesDefaultStyle" Value="True"/>
+        <Setter Property="Width" Value="200"/>
+        <Setter Property="BorderThickness" Value="0"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="Padding" Value="15"/>
+        <Setter Property="Background" Value="#490404"/>
+        <Setter Property="FontSize" Value="15"/>
+        <Setter Property="Foreground" Value="#ead3dc"/>
+        <Setter Property="FontFamily" Value="Raleway"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Button">
+                    <Border Name="border" Padding="10,10,0,10"  Background="{TemplateBinding Background}">
+                        <ContentControl Name="content" HorizontalContentAlignment="Center" Content="{TemplateBinding Content}"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#650E0E"/>
+                            <Setter Property="Foreground" Value="#fff4f4"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" Value="#490404"/>
+                            <Setter Property="Foreground" Value="#ead3dc"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Background" Value="#600D0D"/>
+                            <Setter Property="Foreground" Value="#fff4f4"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="NavMenuStyle" TargetType="StackPanel">
+        <Setter Property="Background" Value="#490404"/>
+    </Style>
+   
+    <!--#endregion-->
+
+    <!--#region BreakTimer-->
+    
+    <Style x:Key="RelaxationViewStyle" TargetType="{x:Type Window}">
+        <Setter Property="Background" Value="#ffe6cc"/>
+        <Style.Resources>
+            <Style TargetType="{x:Type Button}" BasedOn="{StaticResource VHAButtonStyle}"/>
+            <Style TargetType="{x:Type TextBlock}">
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="FontSize" Value="40"/>
+                <Setter Property="Padding" Value="0"/>
+            </Style>
+            <Style TargetType="{x:Type Label}">
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="FontSize" Value="60"/>
+                <Setter Property="Margin" Value="0,0,0,20"/>
             </Style>
         </Style.Resources>
     </Style>
+    
+    <Style x:Key="UpDownButtonStyle" TargetType="{x:Type controls:ImageButton}">
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="Width" Value="10"/>
+        <Setter Property="Height" Value="10"/>
+        <Setter Property="ImageWidth" Value="7"/>
+        <Setter Property="ImageHeight" Value="7"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:ImageButton}">
+                    <Border x:Name="border"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}" 
+                            Background="{TemplateBinding Background}"
+                            SnapsToDevicePixels="true">
+                        <Image 
+                                   Source="{TemplateBinding Image}"
+                                   Width="{TemplateBinding ImageWidth}"
+                                   Height="{TemplateBinding ImageHeight}"
+                                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                   SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                   Grid.Column="1"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Opacity" TargetName="border" Value="0.5"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Opacity" TargetName="border" Value="0.3"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" TargetName="border" Value="0.3"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="DisplayTimeStyle" TargetType="{x:Type Label}">
+        <Setter Property="Background" Value="#490404"/>
+        <Setter Property="Foreground" Value="WhiteSmoke"/>
+        <Setter Property="HorizontalAlignment" Value="Stretch"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="Margin" Value="-1,50,0,0"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="BorderThickness" Value="0"/>
+    </Style>
+
+    
+    <!--#endregion-->
+    
 
 </ResourceDictionary>

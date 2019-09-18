@@ -54,7 +54,7 @@ namespace VisionHealthAssistant.UI.ViewModel
                 }
             }
         }
-
+        
         /// <summary>
         /// Retrieves the access to all pages.
         /// </summary>
@@ -94,7 +94,7 @@ namespace VisionHealthAssistant.UI.ViewModel
         /// <summary>
         /// Closes the window associated with this view-model.
         /// </summary>
-        public void CloseWindow(ICloseable window)
+        public void Exit(ICloseable window)
         {
             if ( window != null ) {
                 window.Close();
@@ -106,7 +106,7 @@ namespace VisionHealthAssistant.UI.ViewModel
         /// </summary>
         protected override void InitializeCommands()
         {
-            ExitCommand = new RelayCommand(p => CloseWindow((ICloseable)p),p => true);
+            ExitCommand = new RelayCommand(p => Exit((ICloseable)p),p => true);
             ChangePageCommand = new RelayCommand(p => ChangeViewModel(p as string),p => true);
         }
 

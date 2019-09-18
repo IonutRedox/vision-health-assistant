@@ -61,10 +61,13 @@
     </ApplicationDefinition>
     <Compile Include="Converters\NumericTextBoxConverter.cs" />
     <Compile Include="CustomControls\ImageButton.cs" />
+    <Compile Include="Helper\BreakTimerHelper.cs" />
+    <Compile Include="Helper\DialogCloser.cs" />
     <Compile Include="Helper\ICloseable.cs" />
     <Compile Include="Helper\TextBoxHelper.cs" />
     <Compile Include="Model\BreakTimer.cs" />
     <Compile Include="ViewModel\NewsViewModel.cs" />
+    <Compile Include="ViewModel\RelaxationViewModel.cs" />
     <Compile Include="ViewModel\SettingsViewModel.cs" />
     <Compile Include="ViewModel\AboutViewModel.cs" />
     <Compile Include="View\AboutView.xaml.cs">
@@ -72,6 +75,9 @@
     </Compile>
     <Compile Include="View\NewsView.xaml.cs">
       <DependentUpon>NewsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\RelaxationView.xaml.cs">
+      <DependentUpon>RelaxationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\SetttingsView.xaml.cs">
       <DependentUpon>SetttingsView.xaml</DependentUpon>
@@ -81,6 +87,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\NewsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\RelaxationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -153,7 +163,9 @@
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Managers\" />
+  </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Icons\breakTimerIcon.png" />
   </ItemGroup>

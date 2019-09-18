@@ -13,45 +13,44 @@
     </UserControl.Resources>
     <StackPanel>
         <StackPanel.Resources>
-            <Style TargetType="{x:Type controls:ImageButton}" BasedOn="{StaticResource UpDownButtonStyle}"/>
-        </StackPanel.Resources>
-        <Label Content="Break timer" Style="{StaticResource PageTitleStyle}"/>
-  
-        <TextBlock Text="{Binding Info}"/>
+                <Style TargetType="{x:Type controls:ImageButton}" BasedOn="{StaticResource UpDownButtonStyle}"/>
+            </StackPanel.Resources>
+            <Label Content="Break timer" Style="{StaticResource PageTitleStyle}"/>
 
-        
-        <Label Content="Break frequency" />
-        <StackPanel Orientation="Horizontal">
-            <TextBox Text="{Binding BreakTimer.Frequency,UpdateSourceTrigger=PropertyChanged,Converter={StaticResource NumericTextBoxConverter}}" Width="40" Height="20" helper:TextBoxHelper.OnlyInteger="True"  HorizontalContentAlignment="Right" />
-            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-                <controls:ImageButton Image="/Resources/Icons/UpArrow.png" Command="{Binding IncreaseFrequencyCommand}"/>
-                <controls:ImageButton Image="/Resources/Icons/DownArrow.png"  Command="{Binding DecreaseFrequencyCommand}"/>
+            <TextBlock Text="{Binding Info}"/>
+            
+            <Label Content="Break frequency" />
+            <StackPanel Orientation="Horizontal">
+                <TextBox Text="{Binding BreakTimer.Frequency,UpdateSourceTrigger=PropertyChanged,Converter={StaticResource NumericTextBoxConverter}}" IsEnabled="{Binding IsNotRunning,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Width="40" Height="20" helper:TextBoxHelper.OnlyInteger="True"  HorizontalContentAlignment="Right" />
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                    <controls:ImageButton Image="/Resources/Icons/UpArrow.png" Command="{Binding IncreaseFrequencyCommand}"/>
+                    <controls:ImageButton Image="/Resources/Icons/DownArrow.png"  Command="{Binding DecreaseFrequencyCommand}"/>
+                </StackPanel>
             </StackPanel>
-        </StackPanel>
 
-        <Label Content="Break length"/>
-        <StackPanel Orientation="Horizontal">
-            <TextBox Text="{Binding BreakTimer.Length,UpdateSourceTrigger=PropertyChanged,Converter={StaticResource NumericTextBoxConverter}}" Width="40" Height="20" helper:TextBoxHelper.OnlyInteger="True" HorizontalContentAlignment="Right"/>
-            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-                <controls:ImageButton Image="/Resources/Icons/UpArrow.png" Command="{Binding IncreaseLengthCommand}"/>
-                <controls:ImageButton Image="/Resources/Icons/DownArrow.png"  Command="{Binding DecreaseLengthCommand}"/>
+            <Label Content="Break length"/>
+            <StackPanel Orientation="Horizontal">
+            <TextBox Text="{Binding BreakTimer.Length,UpdateSourceTrigger=PropertyChanged,Converter={StaticResource NumericTextBoxConverter}}" Width="40" Height="20" helper:TextBoxHelper.OnlyInteger="True" IsEnabled="{Binding IsNotRunning,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Right"/>
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                    <controls:ImageButton Image="/Resources/Icons/UpArrow.png" Command="{Binding IncreaseLengthCommand}"/>
+                    <controls:ImageButton Image="/Resources/Icons/DownArrow.png"  Command="{Binding DecreaseLengthCommand}"/>
+                </StackPanel>
             </StackPanel>
-        </StackPanel>
 
-        <Label Content="Break message"/>
-        <TextBox Text="{Binding BreakTimer.Message}"/>
+            <Label Content="Break message"/>
+        <TextBox Text="{Binding BreakTimer.Message,UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding IsNotRunning,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"/>
 
-        <StackPanel Orientation="Horizontal">
-            <Label Content="Play sound"/>
-            <CheckBox IsChecked="{Binding BreakTimer.IsPlaySoundActive,Mode=TwoWay}" Margin="20,0,0,0"/>
-        </StackPanel>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Play sound"/>
+            <CheckBox IsChecked="{Binding BreakTimer.IsPlaySoundActive,Mode=TwoWay}" IsEnabled="{Binding IsNotRunning,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Margin="20,0,0,0"/>
+            </StackPanel>
 
-        <StackPanel Orientation="Horizontal">
-            <Label Content="Idle reset"/>
-            <CheckBox IsChecked="{Binding BreakTimer.IsIdleResetActive,Mode=TwoWay}" Margin="30,0,0,0"/>
-        </StackPanel>
-
-        <Label Content="Reset when idle for"/>
+            <StackPanel Orientation="Horizontal">
+                <Label Content="Idle reset"/>
+            <CheckBox IsChecked="{Binding BreakTimer.IsIdleResetActive,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding IsNotRunning,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Margin="30,0,0,0"/>
+            </StackPanel>
+ 
+            <Label Content="Reset when idle for"/>
         <StackPanel Orientation="Horizontal" IsEnabled="{Binding BreakTimer.IsIdleResetActive,Mode=OneWay}">
             <TextBox Text="{Binding BreakTimer.IdleResetTime,UpdateSourceTrigger=PropertyChanged,Converter={StaticResource NumericTextBoxConverter}}" Width="40" Height="20" helper:TextBoxHelper.OnlyInteger="True" HorizontalContentAlignment="Right" />
             <StackPanel Orientation="Vertical" VerticalAlignment="Center">
@@ -60,10 +59,11 @@
             </StackPanel>
         </StackPanel>
 
-        <StackPanel Orientation="Horizontal" Margin="20,15,0,0">
-            <Button Content="Start" Command="{Binding StartCommand}" Margin="0,0,15,0"/>
-            <Button Content="Pause" Command="{Binding PauseCommand}" Margin="0,0,15,0"/>
-            <Button Content="End" Command="{Binding EndCommand}"/>
+        <StackPanel Orientation="Horizontal" Margin="20,15,0,10">
+            <Button Content="Start" Command="{Binding StartTimerCommand}" Margin="0,0,15,0"/>
+            <Button Content="Pause" Command="{Binding PauseTimerCommand}" Margin="0,0,15,0"/>
+            <Button Content="Stop" Command="{Binding StopTimerCommand}"/>
         </StackPanel>
+        <Label Content="{Binding RemainingTime,Mode= OneWay,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource DisplayTimeStyle}"/>
     </StackPanel>
 </UserControl>
