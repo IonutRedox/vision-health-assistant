@@ -25,7 +25,7 @@ namespace VisionHealthAssistant.UI.Model
         {
             get { return _frequency; }
             set {
-                if ( _frequency != value ) {
+                if(_frequency != value) {
                     _frequency = value;
                     OnPropertyChanged();
                 }
@@ -39,7 +39,7 @@ namespace VisionHealthAssistant.UI.Model
         {
             get { return _length; }
             set {
-                if ( _length != value ) {
+                if(_length != value) {
                     _length = value;
                     OnPropertyChanged();
                 }
@@ -53,7 +53,7 @@ namespace VisionHealthAssistant.UI.Model
         {
             get { return _idleResetTime; }
             set {
-                if ( _idleResetTime != value ) {
+                if(_idleResetTime != value) {
                     _idleResetTime = value;
                     OnPropertyChanged();
                 }
@@ -67,7 +67,7 @@ namespace VisionHealthAssistant.UI.Model
         {
             get { return _message; }
             set {
-                if ( _message != value ) {
+                if(_message != value) {
                     _message = value;
                     OnPropertyChanged();
                 }
@@ -81,7 +81,7 @@ namespace VisionHealthAssistant.UI.Model
         {
             get { return _isPlaySoundActive; }
             set {
-                if ( _isPlaySoundActive != value ) {
+                if(_isPlaySoundActive != value) {
                     _isPlaySoundActive = value;
                     OnPropertyChanged();
                 }
@@ -95,7 +95,7 @@ namespace VisionHealthAssistant.UI.Model
         {
             get { return _isIdleResetActive; }
             set {
-                if ( _isIdleResetActive != value ) {
+                if(_isIdleResetActive != value) {
                     _isIdleResetActive = value;
                     OnPropertyChanged();
                 }

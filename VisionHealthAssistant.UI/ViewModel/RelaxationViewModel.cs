@@ -20,11 +20,11 @@ namespace VisionHealthAssistant.UI.ViewModel
 
         public RelaxationViewModel(string message,int duration)
         {
-            if ( string.IsNullOrWhiteSpace(message) ) {
+            if(string.IsNullOrWhiteSpace(message)) {
                 throw new ArgumentNullException(message);
             }
 
-            if ( duration <= 0 ) {
+            if(duration <= 0) {
                 throw new ArgumentNullException(nameof(duration));
             }
 
@@ -47,7 +47,7 @@ namespace VisionHealthAssistant.UI.ViewModel
         {
             get { return _dialogResult; }
             private set {
-                if ( _dialogResult != value ) {
+                if(_dialogResult != value) {
                     _dialogResult = value;
                     OnPropertyChanged();
                 }
@@ -61,7 +61,7 @@ namespace VisionHealthAssistant.UI.ViewModel
         {
             get { return _remainingTime; }
             set {
-                if ( _remainingTime != value ) {
+                if(_remainingTime != value) {
                     _remainingTime = value;
                     OnPropertyChanged();
                 }
@@ -132,7 +132,7 @@ namespace VisionHealthAssistant.UI.ViewModel
             _counter++;
             int seconds = _duration * 60 - _counter;
             RemainingTime = BreakTimerHelper.GetFormattedTimeFromSeconds(seconds);
-            if ( seconds == 0 ) {
+            if(seconds == 0) {
                 StopTimerCommand.Execute(null);
             }
         }

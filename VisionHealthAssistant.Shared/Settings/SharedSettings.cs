@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace VisionHealthAssistant.Shared
+﻿namespace VisionHealthAssistant.Shared
 {
     public static class SharedSettings
     {

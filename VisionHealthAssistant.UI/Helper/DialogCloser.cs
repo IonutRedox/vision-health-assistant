@@ -16,7 +16,7 @@ namespace VisionHealthAssistant.UI.Helper
             DependencyPropertyChangedEventArgs e)
         {
             var window = d as Window;
-            if ( window != null ) {
+            if(window != null) {
                 window.DialogResult = e.NewValue as bool?;
             }
         }

@@ -29,17 +29,17 @@ namespace VisionHealthAssistant.UI.Helper
         {
             var textBox = d as TextBox;
 
-            if ( textBox == null ) {
+            if(textBox == null) {
                 throw new InvalidOperationException("This property can only be applied to TextBox");
             }
 
             var oldValue = (bool)e.OldValue;
-            if ( oldValue ) {
+            if(oldValue) {
                 textBox.PreviewTextInput -= OnPreviewTextInput;
             }
 
             var newValue = (bool)e.NewValue;
-            if ( newValue ) {
+            if(newValue) {
                 textBox.PreviewTextInput += OnPreviewTextInput;
             }
         }

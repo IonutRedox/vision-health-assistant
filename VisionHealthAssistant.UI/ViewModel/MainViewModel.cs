@@ -48,13 +48,13 @@ namespace VisionHealthAssistant.UI.ViewModel
         {
             get { return _currentPageViewModel; }
             set {
-                if ( _currentPageViewModel != value ) {
+                if(_currentPageViewModel != value) {
                     _currentPageViewModel = value;
                     OnPropertyChanged();
                 }
             }
         }
-        
+
         /// <summary>
         /// Retrieves the access to all pages.
         /// </summary>
@@ -96,7 +96,7 @@ namespace VisionHealthAssistant.UI.ViewModel
         /// </summary>
         public void Exit(ICloseable window)
         {
-            if ( window != null ) {
+            if(window != null) {
                 window.Close();
             }
         }
@@ -133,7 +133,7 @@ namespace VisionHealthAssistant.UI.ViewModel
         private void ChangeViewModel(string targetPage)
         {
             ViewModelBase targetViewModel = GetViewModel(targetPage);
-            if ( !_pageViewModels.Any(vm => vm.Type == targetViewModel.Type) ) {
+            if(!_pageViewModels.Any(vm => vm.Type == targetViewModel.Type)) {
                 _pageViewModels.Add(targetViewModel);
             }
             Pages oldPages = CurrentPageViewModel.Type;

@@ -56,7 +56,7 @@ namespace VisionHealthAssistant.UI.ViewModel
         {
             get { return _isNotRunning; }
             set {
-                if ( _isNotRunning != value ) {
+                if(_isNotRunning != value) {
                     _isNotRunning = value;
                     OnPropertyChanged();
                 }
@@ -70,7 +70,7 @@ namespace VisionHealthAssistant.UI.ViewModel
         {
             get { return _remainingTime; }
             set {
-                if ( _remainingTime != value ) {
+                if(_remainingTime != value) {
                     _remainingTime = value;
                     OnPropertyChanged();
                 }
@@ -177,7 +177,7 @@ namespace VisionHealthAssistant.UI.ViewModel
             _counter++;
             int seconds = BreakTimer.Frequency * 60 - _counter;
             RemainingTime = BreakTimerHelper.GetFormattedTimeFromSeconds(seconds);
-            if ( seconds == 0) {
+            if(seconds == 0) {
                 _counter = 0;
                 StopTimerCommand.Execute(null);
                 StartRelaxation();
@@ -260,7 +260,7 @@ namespace VisionHealthAssistant.UI.ViewModel
         {
             RelaxationViewModel relaxationViewModel = new RelaxationViewModel(BreakTimer.Message,BreakTimer.Length);
             RelaxationView relaxationView = new RelaxationView { DataContext = relaxationViewModel };
-            if ( relaxationView.ShowDialog() == true && !relaxationViewModel.IsManuallyStopped) {
+            if(relaxationView.ShowDialog() == true && !relaxationViewModel.IsManuallyStopped) {
                 StartTimer();
             }
         }
