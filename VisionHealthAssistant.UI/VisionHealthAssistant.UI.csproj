@@ -64,7 +64,9 @@
     <Compile Include="Helper\BreakTimerHelper.cs" />
     <Compile Include="Helper\DialogCloser.cs" />
     <Compile Include="Helper\ICloseable.cs" />
+    <Compile Include="Helper\LastInputInfo.cs" />
     <Compile Include="Helper\TextBoxHelper.cs" />
+    <Compile Include="Helper\UserIdleHelper.cs" />
     <Compile Include="Model\BreakTimer.cs" />
     <Compile Include="ViewModel\NewsViewModel.cs" />
     <Compile Include="ViewModel\RelaxationViewModel.cs" />
