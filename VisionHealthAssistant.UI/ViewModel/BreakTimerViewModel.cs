@@ -186,7 +186,7 @@ namespace VisionHealthAssistant.UI.ViewModel
             _counter++;
             int seconds = BreakTimer.Frequency * 60 - _counter;
             RemainingTime = BreakTimerHelper.GetFormattedTimeFromSeconds(seconds);
-            if(UserIdleHelper.GetLastInputTime() == BreakTimer.IdleResetTime * 60) {
+            if(UserIdleHelper.GetLastInputTime() == BreakTimer.IdleResetTime * 60 && BreakTimer.IsIdleResetActive) {
                 StopTimerCommand.Execute(null);
             } else if(seconds == 0) {
                 StopTimerCommand.Execute(null);
@@ -209,7 +209,19 @@ namespace VisionHealthAssistant.UI.ViewModel
         /// </summary>
         private bool CanStartTimer()
         {
-            return IsNotRunning && BreakTimer.Frequency > 0 && BreakTimer.Length > 0 && !string.IsNullOrWhiteSpace(BreakTimer.Message) && (!BreakTimer.IsIdleResetActive || BreakTimer.IsIdleResetActive && BreakTimer.IdleResetTime > 0 && BreakTimer.IdleResetTime<BreakTimer.Frequency);
+            return IsNotRunning && HasValidBreakTimerProperties() || _isPaused;
+        }
+
+        /// <summary>
+        /// Whether break timer properties are valid.
+        /// </summary>
+        /// <returns></returns>
+        private bool HasValidBreakTimerProperties()
+        {
+            return BreakTimer.Frequency > 0 &&
+                   BreakTimer.Length > 0 &&
+                   !string.IsNullOrWhiteSpace(BreakTimer.Message) &&
+                   (!BreakTimer.IsIdleResetActive || BreakTimer.IsIdleResetActive && BreakTimer.IdleResetTime > 0 && BreakTimer.IdleResetTime < BreakTimer.Frequency);
         }
 
         /// <summary>
@@ -241,7 +253,7 @@ namespace VisionHealthAssistant.UI.ViewModel
         {
             _timer.Stop();
             _isPaused = true;
-            IsNotRunning = true;
+            IsNotRunning = false;
         }
 
 
