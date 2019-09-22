@@ -6,10 +6,10 @@
         mc:Ignorable="d"
         xmlns:helper="clr-namespace:VisionHealthAssistant.UI.Helper"
         helper:DialogCloser.DialogResult="{Binding DialogResult}"
-        Title="RelaxationView" Name="RelaxationWindow" WindowState="Maximized" WindowStyle="None" Style="{StaticResource RelaxationViewStyle}">
+        Title="RelaxationView" Name="RelaxationWindow" ShowInTaskbar="False" Topmost="True" WindowState="Maximized" WindowStyle="None" Style="{StaticResource RelaxationViewStyle}">
     <StackPanel HorizontalAlignment="Center" VerticalAlignment="Center">
         <TextBlock Text="{Binding Message,Mode=OneWay}"/>
         <Label Content="{Binding RemainingTime,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"/>
-        <Button Content="Stop" Command="{Binding StopTimerCommand}" CommandParameter="{Binding ElementName=RelaxationWindow}" Style="{StaticResource VHAButtonStyle}"/>
+        <Button Content="Stop" Command="{Binding StopTimerCommand}"  CommandParameter="{Binding ElementName=RelaxationWindow}" Loaded="RelaxationWindow_Loaded" Style="{StaticResource VHAButtonStyle}"/>
     </StackPanel>
 </Window>
