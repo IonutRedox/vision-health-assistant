@@ -3,7 +3,27 @@
                     xmlns:controls="clr-namespace:VisionHealthAssistant.UI.CustomControls;assembly=VisionHealthAssistant.UI">
     
     <!--#region CommonPage-->
+
+    <SolidColorBrush x:Key="VHAButtonColor" Color="#C6463C"/>
+    <SolidColorBrush x:Key="VHAButtonIsMouseOverColor" Color="#C55148"/>
+    <SolidColorBrush x:Key="VHAButtonIsPressedColor" Color="#C85C54"/>
+    <SolidColorBrush x:Key="VHAButtonIsDisabledColor" Color="#CCAAA8"/>
     
+    <SolidColorBrush x:Key="PageColor" Color="#ffe6cc"/>
+    
+    <SolidColorBrush x:Key="NavButtonColor" Color="#490404"/>
+    <SolidColorBrush x:Key="NavButtonIsMouseOverColor" Color="#650E0E"/>
+    <SolidColorBrush x:Key="NavButtonIsDisabledColor" Color="#600D0D"/>
+    <SolidColorBrush x:Key="NavButtonForegroundColor" Color="#ead3dc"/>
+    <SolidColorBrush x:Key="NavButtonForegroundIsMouseOverColor" Color="#fff4f4"/>
+
+    <SolidColorBrush x:Key="TextBoxColor" Color="#FEF5EA"/>
+    <SolidColorBrush x:Key="TextBoxBorderIsMouseOverColor" Color="#FEA99F"/>
+    <SolidColorBrush x:Key="TextBoxBorderIsFocusedColor" Color="#FF4029"/>
+    <SolidColorBrush x:Key="TextBoxBorderIsNotFocusedColor" Color="#D6AEA9"/>
+    <SolidColorBrush x:Key="TextBoxIsFocusedColor" Color="#FEF9F3"/>
+
+
     <Style x:Key="PageTitleStyle" TargetType="{x:Type Label}">
         <Setter Property="FontSize" Value="20"/>
         <Setter Property="HorizontalAlignment" Value="Left"/>
@@ -13,7 +33,7 @@
     
     <Style x:Key="VHAButtonStyle" TargetType="{x:Type Button}">
         <Setter Property="OverridesDefaultStyle" Value="True"/>
-        <Setter Property="Background" Value="#C6463C"/>
+        <Setter Property="Background" Value="{StaticResource VHAButtonColor}"/>
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="FontSize" Value="13"/>
         <Setter Property="Width" Value="80"/>
@@ -30,15 +50,15 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="#C55148"/>
+                            <Setter Property="Background" Value="{StaticResource VHAButtonIsMouseOverColor}"/>
                             <Setter Property="Foreground" Value="White"/>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="Background" Value="#C85C54"/>
+                            <Setter Property="Background" Value="{StaticResource VHAButtonIsPressedColor}"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Background" Value="#AF5F59"/>
-                            <Setter Property="Foreground" Value="LightGray"/>
+                            <Setter Property="Background" Value="{StaticResource VHAButtonIsDisabledColor}"/>
+                            <Setter Property="Foreground" Value="WhiteSmoke"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -47,8 +67,8 @@
     </Style>
     
     <Style x:Key="PageStyle" TargetType="{x:Type UserControl}">
-        <Setter Property="Background" Value="#ffe6cc"/>
-        <Setter Property="BorderBrush" Value="#490404"/>
+        <Setter Property="Background" Value="{StaticResource PageColor}"/>
+        <Setter Property="BorderBrush" Value="{StaticResource NavButtonColor}"/>
         <Setter Property="BorderThickness" Value="0.7"/>
         <Style.Resources>
             <Style TargetType="{x:Type Label}">
@@ -67,7 +87,7 @@
             </Style>
             
             <Style TargetType="{x:Type TextBox}">
-                <Setter Property="Background" Value="#FEF5EA"/>
+                <Setter Property="Background" Value="{StaticResource TextBoxColor}"/>
                 <Setter Property="HorizontalAlignment" Value="Left"/>
                 <Setter Property="Margin" Value="20,0,0,0"/>
                 <Setter Property="Width" Value="150"/>
@@ -81,14 +101,14 @@
                             </Border>
                             <ControlTemplate.Triggers>
                                 <Trigger Property="IsMouseOver" Value="true">
-                                    <Setter Property="BorderBrush" TargetName="border" Value="#FEA99F"/>
+                                    <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBoxBorderIsMouseOverColor}"/>
                                 </Trigger>
                                 <Trigger Property="IsFocused" Value="true">
-                                    <Setter Property="BorderBrush" TargetName="border" Value="#FF4029"/>
-                                    <Setter Property="Background" TargetName="border" Value="#FEF9F3"/>
+                                    <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBoxBorderIsFocusedColor}"/>
+                                    <Setter Property="Background" TargetName="border" Value="{StaticResource TextBoxIsFocusedColor}"/>
                                 </Trigger>
                                 <Trigger Property="IsFocused" Value="false">
-                                    <Setter Property="BorderBrush" TargetName="border" Value="#D6AEA9"/>
+                                    <Setter Property="BorderBrush" TargetName="border" Value="{StaticResource TextBoxBorderIsNotFocusedColor}"/>
                                 </Trigger>
                                 <Trigger Property="IsEnabled" Value="False">
                                     <Setter Property="Opacity" Value="0.7"/>
@@ -117,9 +137,9 @@
         <Setter Property="BorderThickness" Value="0"/>
         <Setter Property="HorizontalContentAlignment" Value="Left"/>
         <Setter Property="Padding" Value="15"/>
-        <Setter Property="Background" Value="#490404"/>
+        <Setter Property="Background" Value="{StaticResource NavButtonColor}"/>
         <Setter Property="FontSize" Value="15"/>
-        <Setter Property="Foreground" Value="#ead3dc"/>
+        <Setter Property="Foreground" Value="{StaticResource NavButtonForegroundColor}"/>
         <Setter Property="FontFamily" Value="Raleway"/>
         <Setter Property="Template">
             <Setter.Value>
@@ -129,16 +149,16 @@
                     </Border>
                     <ControlTemplate.Triggers>
                         <Trigger Property="IsMouseOver" Value="True">
-                            <Setter Property="Background" Value="#650E0E"/>
-                            <Setter Property="Foreground" Value="#fff4f4"/>
+                            <Setter Property="Background" Value="{StaticResource NavButtonIsMouseOverColor}"/>
+                            <Setter Property="Foreground" Value="{StaticResource NavButtonForegroundIsMouseOverColor}"/>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="Background" Value="#490404"/>
-                            <Setter Property="Foreground" Value="#ead3dc"/>
+                            <Setter Property="Background" Value="{StaticResource NavButtonColor}"/>
+                            <Setter Property="Foreground" Value="{StaticResource NavButtonForegroundColor}"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
-                            <Setter Property="Background" Value="#600D0D"/>
-                            <Setter Property="Foreground" Value="#fff4f4"/>
+                            <Setter Property="Background" Value="{StaticResource NavButtonIsDisabledColor}"/>
+                            <Setter Property="Foreground" Value="{StaticResource NavButtonForegroundIsMouseOverColor}"/>
                         </Trigger>
                     </ControlTemplate.Triggers>
                 </ControlTemplate>
@@ -147,15 +167,17 @@
     </Style>
 
     <Style x:Key="NavMenuStyle" TargetType="StackPanel">
-        <Setter Property="Background" Value="#490404"/>
+        <Setter Property="Background" Value="{StaticResource NavButtonColor}"/>
     </Style>
    
     <!--#endregion-->
 
     <!--#region BreakTimer-->
     
+    <SolidColorBrush x:Key="TimeFooterColor" Color="#AF5F59"/>
+    
     <Style x:Key="RelaxationViewStyle" TargetType="{x:Type Window}">
-        <Setter Property="Background" Value="#ffe6cc"/>
+        <Setter Property="Background" Value="{StaticResource PageColor}"/>
         <Style.Resources>
             <Style TargetType="{x:Type Button}" BasedOn="{StaticResource VHAButtonStyle}"/>
             <Style TargetType="{x:Type TextBlock}">
@@ -213,7 +235,7 @@
     </Style>
 
     <Style x:Key="DisplayTimeStyle" TargetType="{x:Type Label}">
-        <Setter Property="Background" Value="#AF5F59"/>
+        <Setter Property="Background" Value="{StaticResource TimeFooterColor}"/>
         <Setter Property="Foreground" Value="WhiteSmoke"/>
         <Setter Property="Padding" Value="0"/>
         <Setter Property="Margin" Value="-1,50,0,0"/>
