@@ -38,6 +38,9 @@
   <PropertyGroup>
     <StartupObject />
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Resources\Icons\VHAIcon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -213,6 +216,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Sounds\BreakTimerAlert.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\VHAIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\VHAIcon-32px.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

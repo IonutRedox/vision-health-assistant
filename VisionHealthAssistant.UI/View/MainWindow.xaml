@@ -6,7 +6,7 @@
         xmlns:view="clr-namespace:VisionHealthAssistant.UI.View"
         xmlns:vm="clr-namespace:VisionHealthAssistant.UI.ViewModel"
         mc:Ignorable="d"
-    x:Name="MainView"  Height="400" Width="800"   WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None">
+    x:Name="MainView"  Height="400" Width="800" Icon="/Resources/Icons/VHAIcon-32px.ico"  Title="{Binding AppName}"  WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None">
     <Window.Resources>
         <ResourceDictionary>
             <DataTemplate DataType="{x:Type vm:NewsViewModel}">
