@@ -79,10 +79,10 @@
     <Compile Include="View\AboutView.xaml.cs">
       <DependentUpon>AboutView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\NewsView.xaml.cs">
+    <Compile Include="View\News\NewsView.xaml.cs">
       <DependentUpon>NewsView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\RelaxationView.xaml.cs">
+    <Compile Include="View\BreakTimer\RelaxationView.xaml.cs">
       <DependentUpon>RelaxationView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\SetttingsView.xaml.cs">
@@ -92,11 +92,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\NewsView.xaml">
+    <Page Include="View\News\NewsView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\RelaxationView.xaml">
+    <Page Include="View\BreakTimer\RelaxationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -108,11 +108,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Resource>
-    <Page Include="View\BreakTimerView.xaml">
+    <Page Include="View\BreakTimer\BreakTimerView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\EyeExercisesView.xaml">
+    <Page Include="View\EyeExercises\EyeExercisesView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -129,10 +129,10 @@
     <Compile Include="ViewModel\EyeExercisesViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\ViewModelBase.cs" />
-    <Compile Include="View\BreakTimerView.xaml.cs">
+    <Compile Include="View\BreakTimer\BreakTimerView.xaml.cs">
       <DependentUpon>BreakTimerView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\EyeExercisesView.xaml.cs">
+    <Compile Include="View\EyeExercises\EyeExercisesView.xaml.cs">
       <DependentUpon>EyeExercisesView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\MainWindow.xaml.cs">
