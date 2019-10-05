@@ -8,8 +8,10 @@ namespace VisionHealthAssistant.UI
     /// </summary>
     public partial class MainWindow: Window , ICloseable
     {
-        public MainWindow() {
+        public MainWindow()
+        {
             InitializeComponent();
+            MouseLeftButtonDown += (s,e) => DragMove();
         }
     }
 }
