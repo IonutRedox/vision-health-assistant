@@ -6,7 +6,7 @@
         xmlns:view="clr-namespace:VisionHealthAssistant.UI.View"
         xmlns:vm="clr-namespace:VisionHealthAssistant.UI.ViewModel"
         mc:Ignorable="d"
-    x:Name="MainView"  Style="{StaticResource MainWindowStyle}" Width="800" Height="400" ResizeMode="NoResize" Icon="/Resources/Icons/VHAIcon-32px.ico"  Title="{Binding AppName}"  WindowStartupLocation="CenterScreen"  WindowStyle="None">
+    x:Name="MainView"  Style="{StaticResource MainWindowStyle}" Width="800" Height="400" Icon="/Resources/Icons/VHAIcon-32px.ico" AllowsTransparency="True" ResizeMode="CanResizeWithGrip" Title="{Binding AppName}"  WindowStartupLocation="CenterScreen"  WindowStyle="None">
     <Window.Resources>
         <ResourceDictionary>
             <DataTemplate DataType="{x:Type vm:WindowStateViewModel}">
