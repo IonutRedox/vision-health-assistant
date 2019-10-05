@@ -17,12 +17,10 @@ namespace VisionHealthAssistant.UI.ViewModel
         /// </summary>
         public MainViewModel()
         {
+            WindowStateViewModel = new WindowStateViewModel();
             InitializeCommands();
             InitializePageStates();
-            _pageViewModels = new List<ViewModelBase> {
-                new NewsViewModel()
-            };
-            CurrentPageViewModel = _pageViewModels.First();
+            SelectFirstPage();
         }
 
         #endregion
@@ -54,6 +52,11 @@ namespace VisionHealthAssistant.UI.ViewModel
                 }
             }
         }
+
+        /// <summary>
+        /// Responsible for minimize,maximize and close logic.
+        /// </summary>
+        public WindowStateViewModel WindowStateViewModel { get; }
 
         /// <summary>
         /// Retrieves the access to all pages.
@@ -108,6 +111,17 @@ namespace VisionHealthAssistant.UI.ViewModel
         {
             ExitCommand = new RelayCommand(p => Exit((ICloseable)p),p => true);
             ChangePageCommand = new RelayCommand(p => ChangeViewModel(p as string),p => true);
+        }
+
+        /// <summary>
+        /// Selects the first page.
+        /// </summary>
+        private void SelectFirstPage()
+        {
+            _pageViewModels = new List<ViewModelBase> {
+                new NewsViewModel()
+            };
+            CurrentPageViewModel = _pageViewModels.First();
         }
 
         /// <summary>

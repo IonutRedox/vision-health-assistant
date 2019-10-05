@@ -62,6 +62,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
     <Compile Include="Converters\NumericTextBoxConverter.cs" />
     <Compile Include="CustomControls\ImageButton.cs" />
     <Compile Include="Helper\BreakTimerHelper.cs" />
@@ -76,6 +77,7 @@
     <Compile Include="ViewModel\RelaxationViewModel.cs" />
     <Compile Include="ViewModel\SettingsViewModel.cs" />
     <Compile Include="ViewModel\AboutViewModel.cs" />
+    <Compile Include="ViewModel\WindowStateViewModel.cs" />
     <Compile Include="View\AboutView.xaml.cs">
       <DependentUpon>AboutView.xaml</DependentUpon>
     </Compile>
@@ -87,6 +89,9 @@
     </Compile>
     <Compile Include="View\SetttingsView.xaml.cs">
       <DependentUpon>SetttingsView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\WindowState.xaml.cs">
+      <DependentUpon>WindowState.xaml</DependentUpon>
     </Compile>
     <Page Include="View\AboutView.xaml">
       <SubType>Designer</SubType>
@@ -101,6 +106,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\SetttingsView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\WindowState.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -222,6 +231,12 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Resources\Icons\VHAIcon-32px.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\Icons\closeIcon.png" />
+    <Resource Include="Resources\Icons\maximizeIcon.png" />
+    <Resource Include="Resources\Icons\minimizeIcon.png" />
+    <Resource Include="Resources\Icons\restoreDownIcon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -6,9 +6,12 @@
         xmlns:view="clr-namespace:VisionHealthAssistant.UI.View"
         xmlns:vm="clr-namespace:VisionHealthAssistant.UI.ViewModel"
         mc:Ignorable="d"
-    x:Name="MainView"  Height="400" Width="800" Icon="/Resources/Icons/VHAIcon-32px.ico"  Title="{Binding AppName}"  WindowStartupLocation="CenterScreen" ResizeMode="NoResize" WindowStyle="None">
+    x:Name="MainView"  Style="{StaticResource MainWindowStyle}" Width="800" Height="400" ResizeMode="NoResize" Icon="/Resources/Icons/VHAIcon-32px.ico"  Title="{Binding AppName}"  WindowStartupLocation="CenterScreen"  WindowStyle="None">
     <Window.Resources>
         <ResourceDictionary>
+            <DataTemplate DataType="{x:Type vm:WindowStateViewModel}">
+                <view:WindowState/>
+            </DataTemplate>
             <DataTemplate DataType="{x:Type vm:NewsViewModel}">
                 <view:NewsView/>
             </DataTemplate>
@@ -26,50 +29,54 @@
             </DataTemplate>
         </ResourceDictionary>
     </Window.Resources>
-    
-    <DockPanel>
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="3*"/>
+        </Grid.ColumnDefinitions>
         <!-- Navigation menu area -->
-        <StackPanel Style="{StaticResource NavMenuStyle}" Width="200" Orientation="Vertical" >
+        <StackPanel Style="{StaticResource NavMenuStyle}" Grid.Column="0" Width="200" Orientation="Vertical" >
             <StackPanel.Resources>
                 <Style BasedOn="{StaticResource NavBtnStyle}" TargetType="Button"/>
             </StackPanel.Resources>
             <Image Width="150" Height="70" HorizontalAlignment="Left" Margin="-7,2,0,0" Source="/Resources/Logo/VHALogo.png"/>
-            
+
             <Button Command="{Binding ChangePageCommand}" CommandParameter="News" IsEnabled="{Binding PageState[0]}">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/Icons/newsIcon.png"/>
                     <TextBlock Text="News" Margin="15,0,0,0"/>
                 </StackPanel>
             </Button>
-            
+
             <Button  Command="{Binding ChangePageCommand}" CommandParameter="BreakTimer" IsEnabled="{Binding PageState[1]}">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/Icons/breakTimerIcon.png"/>
                     <TextBlock Text="Break timer" Margin="15,0,0,0"/>
                 </StackPanel>
             </Button>
-            
+
             <Button Command="{Binding ChangePageCommand}" CommandParameter="EyeExercises" IsEnabled="{Binding PageState[2]}">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/Icons/eyeIcon.png"/>
                     <TextBlock Text="Eye exercises" Margin="15,0,0,0"/>
                 </StackPanel>
             </Button>
-            
+
             <Button Command="{Binding ChangePageCommand}" CommandParameter="Settings" IsEnabled="{Binding PageState[3]}">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/Icons/settingsIcon.png"/>
                     <TextBlock Text="Settings" Margin="15,0,0,0"/>
                 </StackPanel>
             </Button>
-            
+
             <Button Command="{Binding ChangePageCommand}" CommandParameter="About" IsEnabled="{Binding PageState[4]}">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/Icons/aboutIcon.png"/>
                     <TextBlock Text="About" Margin="15,0,0,0"/>
                 </StackPanel>
             </Button>
-            
+
             <Button Command="{Binding ExitCommand}" CommandParameter="{Binding ElementName=MainView}">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resources/Icons/exitIcon.png"/>
@@ -77,8 +84,9 @@
                 </StackPanel>
             </Button>
         </StackPanel>
-        
+
         <!-- Content area -->
-        <ContentControl  Content ="{Binding CurrentPageViewModel}" DockPanel.Dock="Right"/>
-    </DockPanel>
+        <ContentControl  Content="{Binding WindowStateViewModel}" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right"  Panel.ZIndex="2" />
+        <ContentControl  Content ="{Binding CurrentPageViewModel}" Grid.Column="1" Panel.ZIndex="1" />
+    </Grid>
 </Window>

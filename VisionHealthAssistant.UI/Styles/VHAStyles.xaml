@@ -68,8 +68,6 @@
     
     <Style x:Key="PageStyle" TargetType="{x:Type UserControl}">
         <Setter Property="Background" Value="{StaticResource PageColor}"/>
-        <Setter Property="BorderBrush" Value="{StaticResource NavButtonColor}"/>
-        <Setter Property="BorderThickness" Value="0.7"/>
         <Style.Resources>
             <Style TargetType="{x:Type Label}">
                 <Setter Property="Padding" Value="0"/>
@@ -131,6 +129,61 @@
     
     <!--#region MainWindow-->
     
+    <Style x:Key="MainWindowStyle" TargetType="{x:Type Window}">
+        <Setter Property="BorderBrush" Value="{StaticResource NavButtonColor}"/>
+        <Setter Property="BorderThickness" Value="0.7"/>
+    </Style>
+
+    <Style x:Key="StateButtonStyle" TargetType="{x:Type controls:ImageButton}">
+        <Setter Property="Background" Value="{StaticResource PageColor}"/>
+        <Setter Property="Padding" Value="0"/>
+        <Setter Property="Width" Value="20"/>
+        <Setter Property="Height" Value="20"/>
+        <Setter Property="ImageWidth" Value="20"/>
+        <Setter Property="ImageHeight" Value="20"/>
+        <Setter Property="Opacity" Value="0.8"/>
+        <Setter Property="HorizontalContentAlignment" Value="Center"/>
+        <Setter Property="VerticalContentAlignment" Value="Center"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="{x:Type controls:ImageButton}">
+                    <Border x:Name="border"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}" 
+                            Background="{TemplateBinding Background}"
+                            SnapsToDevicePixels="true">
+                        <Image 
+                                   Source="{TemplateBinding Image}"
+                                   Width="{TemplateBinding ImageWidth}"
+                                   Height="{TemplateBinding ImageHeight}"
+                                   HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}" 
+                                   SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}" 
+                                   VerticalAlignment="{TemplateBinding VerticalContentAlignment}"
+                                   Grid.Column="1"/>
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" TargetName="border" Value="#F2D4B5"/>
+                            <Setter Property="Opacity" TargetName="border" Value="0.7"/>
+                        </Trigger>
+                        <Trigger Property="IsPressed" Value="True">
+                            <Setter Property="Background" TargetName="border" Value="{StaticResource PageColor}"/>
+                            <Setter Property="Opacity" TargetName="border" Value="0.4"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <Style x:Key="WindowStateStyle" TargetType="{x:Type UserControl}">
+        <Style.Resources>
+            <Style TargetType="{x:Type controls:ImageButton}" BasedOn="{StaticResource StateButtonStyle}"/>
+        </Style.Resources>
+    </Style>
+    
+ 
+
     <Style x:Key="NavBtnStyle" TargetType="{x:Type Button}">
         <Setter Property="OverridesDefaultStyle" Value="True"/>
         <Setter Property="Width" Value="200"/>
@@ -238,7 +291,7 @@
         <Setter Property="Background" Value="{StaticResource TimeFooterColor}"/>
         <Setter Property="Foreground" Value="WhiteSmoke"/>
         <Setter Property="Padding" Value="0"/>
-        <Setter Property="Margin" Value="-1,50,0,0"/>
+        <Setter Property="Margin" Value="0,50,0,0"/>
         <Setter Property="HorizontalAlignment" Value="Stretch"/>
         <Setter Property="HorizontalContentAlignment" Value="Center"/>
         <Setter Property="BorderThickness" Value="0"/>

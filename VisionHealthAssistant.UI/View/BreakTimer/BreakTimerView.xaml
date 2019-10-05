@@ -17,7 +17,7 @@
             </StackPanel.Resources>
             <Label Content="Break timer" Style="{StaticResource PageTitleStyle}"/>
 
-            <TextBlock Text="{Binding Info}"/>
+            <TextBlock Text="{Binding Info}" TextWrapping="Wrap"/>
             
             <Label Content="Break frequency" />
             <StackPanel Orientation="Horizontal">
