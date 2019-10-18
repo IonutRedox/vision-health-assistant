@@ -11,16 +11,32 @@
     <UserControl.Resources>
         <converters:NumericTextBoxConverter x:Key="NumericTextBoxConverter"/>
     </UserControl.Resources>
-    <StackPanel>
-        <StackPanel.Resources>
-                <Style TargetType="{x:Type controls:ImageButton}" BasedOn="{StaticResource UpDownButtonStyle}"/>
-            </StackPanel.Resources>
-            <Label Content="Break timer" Style="{StaticResource PageTitleStyle}"/>
+    <Grid HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+        <Grid.Resources>
+            <Style TargetType="{x:Type controls:ImageButton}" BasedOn="{StaticResource UpDownButtonStyle}"/>
+        </Grid.Resources>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Label Grid.Row="0" Content="Break timer" Style="{StaticResource PageTitleStyle}"/>
 
-            <TextBlock Text="{Binding Info}" TextWrapping="Wrap"/>
-            
-            <Label Content="Break frequency" />
-            <StackPanel Orientation="Horizontal">
+            <TextBlock Grid.Row="1" Grid.ColumnSpan="2" Text="{Binding Info}" TextWrapping="Wrap"/>
+
+            <Label Grid.Row="2" Grid.Column="0" Content="Break frequency" />
+            <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
                 <TextBox Text="{Binding BreakTimer.Frequency,UpdateSourceTrigger=PropertyChanged,Converter={StaticResource NumericTextBoxConverter}}" IsEnabled="{Binding IsNotRunning,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Width="40" Height="20" helper:TextBoxHelper.OnlyInteger="True"  HorizontalContentAlignment="Right" />
                 <StackPanel Orientation="Vertical" VerticalAlignment="Center">
                     <controls:ImageButton Image="/Resources/Icons/UpArrow.png" Command="{Binding IncreaseFrequencyCommand}"/>
@@ -28,42 +44,38 @@
                 </StackPanel>
             </StackPanel>
 
-            <Label Content="Break length"/>
-            <StackPanel Orientation="Horizontal">
-            <TextBox Text="{Binding BreakTimer.Length,UpdateSourceTrigger=PropertyChanged,Converter={StaticResource NumericTextBoxConverter}}" Width="40" Height="20" helper:TextBoxHelper.OnlyInteger="True" IsEnabled="{Binding IsNotRunning,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Right"/>
+        <Label Grid.Row="3" Grid.Column="0" Content="Break length"/>
+            <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal">
+                <TextBox Text="{Binding BreakTimer.Length,UpdateSourceTrigger=PropertyChanged,Converter={StaticResource NumericTextBoxConverter}}" Width="40" Height="20" helper:TextBoxHelper.OnlyInteger="True" IsEnabled="{Binding IsNotRunning,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Right"/>
                 <StackPanel Orientation="Vertical" VerticalAlignment="Center">
                     <controls:ImageButton Image="/Resources/Icons/UpArrow.png" Command="{Binding IncreaseLengthCommand}"/>
                     <controls:ImageButton Image="/Resources/Icons/DownArrow.png"  Command="{Binding DecreaseLengthCommand}"/>
                 </StackPanel>
             </StackPanel>
 
-            <Label Content="Break message"/>
-        <TextBox Text="{Binding BreakTimer.Message,UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding IsNotRunning,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"/>
+            <Label Grid.Row="4" Grid.Column="0" Content="Break message"/>
+            <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding BreakTimer.Message,UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding IsNotRunning,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"/>
 
-            <StackPanel Orientation="Horizontal">
-                <Label Content="Play sound"/>
-            <CheckBox IsChecked="{Binding BreakTimer.IsPlaySoundActive,Mode=TwoWay}" IsEnabled="{Binding IsNotRunning,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Margin="20,0,0,0"/>
+            <Label Grid.Row="5" Grid.Column="0" Content="Play sound"/>
+            <CheckBox Grid.Row="5" Grid.Column="1" IsChecked="{Binding BreakTimer.IsPlaySoundActive,Mode=TwoWay}" IsEnabled="{Binding IsNotRunning,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"/>
+
+            <Label Grid.Row="6" Grid.Column="0" Content="Idle reset"/>
+            <CheckBox Grid.Row="6" Grid.Column="1" IsChecked="{Binding BreakTimer.IsIdleResetActive,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding IsNotRunning,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}"/>
+
+            <Label Grid.Row="7" Grid.Column="0" Content="Reset when idle for"/>
+            <StackPanel Grid.Row="7" Grid.Column="1" Orientation="Horizontal" IsEnabled="{Binding BreakTimer.IsIdleResetActive,Mode=OneWay}">
+                <TextBox Text="{Binding BreakTimer.IdleResetTime,UpdateSourceTrigger=PropertyChanged,Converter={StaticResource NumericTextBoxConverter}}" Width="40" Height="20" helper:TextBoxHelper.OnlyInteger="True" HorizontalContentAlignment="Right" />
+                <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+                    <controls:ImageButton Image="/Resources/Icons/UpArrow.png" Command="{Binding IncreaseIdleResetTimeCommand}"/>
+                    <controls:ImageButton Image="/Resources/Icons/DownArrow.png" Command="{Binding DecreaseIdleResetTimeCommand}"/>
+                </StackPanel>
             </StackPanel>
 
-            <StackPanel Orientation="Horizontal">
-                <Label Content="Idle reset"/>
-            <CheckBox IsChecked="{Binding BreakTimer.IsIdleResetActive,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" IsEnabled="{Binding IsNotRunning,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Margin="30,0,0,0"/>
+            <StackPanel Grid.Row="8" Grid.ColumnSpan="2" Orientation="Horizontal" Margin="20,25,0,10">
+                <Button Content="Start" Command="{Binding StartTimerCommand}" Margin="0,0,15,0"/>
+                <Button Content="Pause" Command="{Binding PauseTimerCommand}" Margin="0,0,15,0"/>
+                <Button Content="Stop" Command="{Binding StopTimerCommand}"/>
             </StackPanel>
- 
-            <Label Content="Reset when idle for"/>
-        <StackPanel Orientation="Horizontal" IsEnabled="{Binding BreakTimer.IsIdleResetActive,Mode=OneWay}">
-            <TextBox Text="{Binding BreakTimer.IdleResetTime,UpdateSourceTrigger=PropertyChanged,Converter={StaticResource NumericTextBoxConverter}}" Width="40" Height="20" helper:TextBoxHelper.OnlyInteger="True" HorizontalContentAlignment="Right" />
-            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
-                <controls:ImageButton Image="/Resources/Icons/UpArrow.png" Command="{Binding IncreaseIdleResetTimeCommand}"/>
-                <controls:ImageButton Image="/Resources/Icons/DownArrow.png" Command="{Binding DecreaseIdleResetTimeCommand}"/>
-            </StackPanel>
-        </StackPanel>
-
-        <StackPanel Orientation="Horizontal" Margin="20,15,0,10">
-            <Button Content="Start" Command="{Binding StartTimerCommand}" Margin="0,0,15,0"/>
-            <Button Content="Pause" Command="{Binding PauseTimerCommand}" Margin="0,0,15,0"/>
-            <Button Content="Stop" Command="{Binding StopTimerCommand}"/>
-        </StackPanel>
-        <Label Content="{Binding RemainingTime,Mode= OneWay,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource DisplayTimeStyle}"/>
-    </StackPanel>
+            <Label Grid.Row="9" Grid.ColumnSpan="2" Content="{Binding RemainingTime,Mode= OneWay,UpdateSourceTrigger=PropertyChanged}" Style="{StaticResource DisplayTimeStyle}"/>
+    </Grid>
 </UserControl>

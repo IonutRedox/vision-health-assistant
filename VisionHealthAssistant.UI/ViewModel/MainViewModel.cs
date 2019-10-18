@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
 using System.Reflection;
+using System.Windows;
 using VisionHealthAssistant.Shared;
 using VisionHealthAssistant.UI.Helper;
 
@@ -17,7 +18,6 @@ namespace VisionHealthAssistant.UI.ViewModel
         /// </summary>
         public MainViewModel()
         {
-            WindowStateViewModel = new WindowStateViewModel();
             InitializeCommands();
             InitializePageStates();
             SelectFirstPage();
@@ -29,6 +29,7 @@ namespace VisionHealthAssistant.UI.ViewModel
 
         private List<ViewModelBase> _pageViewModels;
         private ViewModelBase _currentPageViewModel;
+        private WindowState _windowState;
 
         #endregion
 
@@ -54,9 +55,19 @@ namespace VisionHealthAssistant.UI.ViewModel
         }
 
         /// <summary>
-        /// Responsible for minimize,maximize and close logic.
+        /// Gets or sets the window state.
         /// </summary>
-        public WindowStateViewModel WindowStateViewModel { get; }
+        public WindowState WindowState
+        {
+            get { return _windowState; }
+            set {
+                if(_windowState != value) {
+                    _windowState = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
 
         /// <summary>
         /// Retrieves the access to all pages.
@@ -73,6 +84,11 @@ namespace VisionHealthAssistant.UI.ViewModel
         public RelayCommand ExitCommand { get; private set; }
 
         /// <summary>
+        /// Command to minimize the window.
+        /// </summary>
+        public RelayCommand MinimizeWindowCommand { get; private set; }
+
+        /// <summary>
         /// Command to change current view model.
         /// </summary>
         public RelayCommand ChangePageCommand { get; private set; }
@@ -86,6 +102,7 @@ namespace VisionHealthAssistant.UI.ViewModel
         /// </summary>
         private void InitializePageStates()
         {
+            WindowState = WindowState.Normal;
             PageState = new ObservableCollection<bool>();
             PageState.Insert((int)Pages.News,false);
             PageState.Insert((int)Pages.BreakTimer,true);
@@ -97,7 +114,7 @@ namespace VisionHealthAssistant.UI.ViewModel
         /// <summary>
         /// Closes the window associated with this view-model.
         /// </summary>
-        public void Exit(ICloseable window)
+        private void Exit(ICloseable window)
         {
             if(window != null) {
                 window.Close();
@@ -105,10 +122,21 @@ namespace VisionHealthAssistant.UI.ViewModel
         }
 
         /// <summary>
+        /// Changes the current state of the window to minimized.
+        /// </summary>
+        private void MinimizeWindow()
+        {
+            WindowState = WindowState.Minimized;
+        }
+
+
+
+        /// <summary>
         /// Initializes commands.
         /// </summary>
         protected override void InitializeCommands()
         {
+            MinimizeWindowCommand = new RelayCommand(p => MinimizeWindow(),p => true);
             ExitCommand = new RelayCommand(p => Exit((ICloseable)p),p => true);
             ChangePageCommand = new RelayCommand(p => ChangeViewModel(p as string),p => true);
         }

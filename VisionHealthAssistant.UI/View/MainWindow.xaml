@@ -4,14 +4,12 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:view="clr-namespace:VisionHealthAssistant.UI.View"
+         xmlns:controls="clr-namespace:VisionHealthAssistant.UI.CustomControls"
         xmlns:vm="clr-namespace:VisionHealthAssistant.UI.ViewModel"
         mc:Ignorable="d"
-    x:Name="MainView"  Style="{StaticResource MainWindowStyle}" Width="800" Height="400" Icon="/Resources/Icons/VHAIcon-32px.ico" AllowsTransparency="True" ResizeMode="CanResizeWithGrip" Title="{Binding AppName}"  WindowStartupLocation="CenterScreen"  WindowStyle="None">
+    x:Name="MainView" WindowState="{Binding WindowState}"  Style="{StaticResource MainWindowStyle}"  Width="800" Height="400" Top="0" Left="0" MinWidth="800" MinHeight="400" Icon="/Resources/Icons/VHAIcon-32px.ico" AllowsTransparency="True" ResizeMode="CanResizeWithGrip" Title="{Binding AppName}"  WindowStartupLocation="CenterScreen"  WindowStyle="None">
     <Window.Resources>
         <ResourceDictionary>
-            <DataTemplate DataType="{x:Type vm:WindowStateViewModel}">
-                <view:WindowState/>
-            </DataTemplate>
             <DataTemplate DataType="{x:Type vm:NewsViewModel}">
                 <view:NewsView/>
             </DataTemplate>
@@ -29,10 +27,9 @@
             </DataTemplate>
         </ResourceDictionary>
     </Window.Resources>
-
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="3*"/>
         </Grid.ColumnDefinitions>
         <!-- Navigation menu area -->
@@ -86,7 +83,10 @@
         </StackPanel>
 
         <!-- Content area -->
-        <ContentControl  Content="{Binding WindowStateViewModel}" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Right"  Panel.ZIndex="2" />
-        <ContentControl  Content ="{Binding CurrentPageViewModel}" Grid.Column="1" Panel.ZIndex="1" />
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Top" HorizontalAlignment="Right" Grid.Column="1" Panel.ZIndex="2">
+            <controls:ImageButton Style="{StaticResource StateButtonStyle}" Image="/Resources/Icons/minimizeIcon.png" ToolTip="Minimize" Command="{Binding MinimizeWindowCommand}"/>
+            <controls:ImageButton Style="{StaticResource StateButtonStyle}" Image="/Resources/Icons/closeIcon.png" ToolTip="Close" Command="{Binding ExitCommand}" CommandParameter="{Binding ElementName=MainView}"/>
+        </StackPanel>
+        <ContentControl  Content ="{Binding CurrentPageViewModel}" Grid.Column="1"  Panel.ZIndex="1" />
     </Grid>
 </Window>
