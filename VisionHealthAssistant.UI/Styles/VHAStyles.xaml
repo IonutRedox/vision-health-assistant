@@ -12,6 +12,7 @@
     <SolidColorBrush x:Key="PageColor" Color="#ffe6cc"/>
     
     <SolidColorBrush x:Key="NavButtonColor" Color="#490404"/>
+    <SolidColorBrush x:Key="NavButtonIsPressedColor" Color="#771717"/>
     <SolidColorBrush x:Key="NavButtonIsMouseOverColor" Color="#650E0E"/>
     <SolidColorBrush x:Key="NavButtonIsDisabledColor" Color="#600D0D"/>
     <SolidColorBrush x:Key="NavButtonForegroundColor" Color="#ead3dc"/>
@@ -202,8 +203,7 @@
                             <Setter Property="Foreground" Value="{StaticResource NavButtonForegroundIsMouseOverColor}"/>
                         </Trigger>
                         <Trigger Property="IsPressed" Value="True">
-                            <Setter Property="Background" Value="{StaticResource NavButtonColor}"/>
-                            <Setter Property="Foreground" Value="{StaticResource NavButtonForegroundColor}"/>
+                            <Setter Property="Background" Value="{StaticResource NavButtonIsPressedColor}"/>
                         </Trigger>
                         <Trigger Property="IsEnabled" Value="False">
                             <Setter Property="Background" Value="{StaticResource NavButtonIsDisabledColor}"/>
