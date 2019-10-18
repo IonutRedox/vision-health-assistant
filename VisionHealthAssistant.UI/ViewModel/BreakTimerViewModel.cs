@@ -202,6 +202,7 @@ namespace VisionHealthAssistant.UI.ViewModel
             _timer.Start();
             IsNotRunning = false;
             _isPaused = false;
+            BreakTimer.IsIdleResetActive = false;
         }
 
         /// <summary>
@@ -234,6 +235,7 @@ namespace VisionHealthAssistant.UI.ViewModel
             _counter = 0;
             IsNotRunning = true;
             _isPaused = false;
+            BreakTimer.IsIdleResetActive = true;
             CommandManager.InvalidateRequerySuggested();
         }
 
