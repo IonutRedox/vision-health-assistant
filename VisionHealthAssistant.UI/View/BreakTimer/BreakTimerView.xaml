@@ -37,8 +37,13 @@
 
             <Label Grid.Row="2" Grid.Column="0" Content="Break frequency" />
             <StackPanel Grid.Row="2" Grid.Column="1" Orientation="Horizontal">
-                <TextBox Text="{Binding BreakTimer.Frequency,UpdateSourceTrigger=PropertyChanged,Converter={StaticResource NumericTextBoxConverter}}" IsEnabled="{Binding IsNotRunning,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Width="40" Height="20" helper:TextBoxHelper.OnlyInteger="True"  HorizontalContentAlignment="Right" />
-                <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+            <TextBox Text="{Binding BreakTimer.Frequency,UpdateSourceTrigger=PropertyChanged,Converter={StaticResource NumericTextBoxConverter}}" IsEnabled="{Binding IsNotRunning,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Width="40" Height="20" helper:TextBoxHelper.OnlyInteger="True"  HorizontalContentAlignment="Right">
+                <TextBox.InputBindings>
+                    <KeyBinding Key="Up" Command="{Binding IncreaseFrequencyCommand}"/>
+                    <KeyBinding Key="Down" Command="{Binding DecreaseFrequencyCommand}"/>
+                </TextBox.InputBindings>
+            </TextBox>
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
                     <controls:ImageButton Image="/Resources/Icons/UpArrow.png" Command="{Binding IncreaseFrequencyCommand}"/>
                     <controls:ImageButton Image="/Resources/Icons/DownArrow.png"  Command="{Binding DecreaseFrequencyCommand}"/>
                 </StackPanel>
@@ -46,8 +51,13 @@
 
         <Label Grid.Row="3" Grid.Column="0" Content="Break length"/>
             <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal">
-                <TextBox Text="{Binding BreakTimer.Length,UpdateSourceTrigger=PropertyChanged,Converter={StaticResource NumericTextBoxConverter}}" Width="40" Height="20" helper:TextBoxHelper.OnlyInteger="True" IsEnabled="{Binding IsNotRunning,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Right"/>
-                <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+            <TextBox Text="{Binding BreakTimer.Length,UpdateSourceTrigger=PropertyChanged,Converter={StaticResource NumericTextBoxConverter}}" Width="40" Height="20" helper:TextBoxHelper.OnlyInteger="True" IsEnabled="{Binding IsNotRunning,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" HorizontalContentAlignment="Right">
+                <TextBox.InputBindings>
+                    <KeyBinding Key="Up" Command="{Binding IncreaseLengthCommand}"/>
+                    <KeyBinding Key="Down" Command="{Binding DecreaseLengthCommand}"/>
+                </TextBox.InputBindings>
+            </TextBox>
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
                     <controls:ImageButton Image="/Resources/Icons/UpArrow.png" Command="{Binding IncreaseLengthCommand}"/>
                     <controls:ImageButton Image="/Resources/Icons/DownArrow.png"  Command="{Binding DecreaseLengthCommand}"/>
                 </StackPanel>
@@ -64,8 +74,13 @@
 
             <Label Grid.Row="7" Grid.Column="0" Content="Reset when idle for"/>
             <StackPanel Grid.Row="7" Grid.Column="1" Orientation="Horizontal" IsEnabled="{Binding BreakTimer.IsIdleResetActive,Mode=OneWay}">
-                <TextBox Text="{Binding BreakTimer.IdleResetTime,UpdateSourceTrigger=PropertyChanged,Converter={StaticResource NumericTextBoxConverter}}" Width="40" Height="20" helper:TextBoxHelper.OnlyInteger="True" HorizontalContentAlignment="Right" />
-                <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+            <TextBox Text="{Binding BreakTimer.IdleResetTime,UpdateSourceTrigger=PropertyChanged,Converter={StaticResource NumericTextBoxConverter}}" Width="40" Height="20" helper:TextBoxHelper.OnlyInteger="True" HorizontalContentAlignment="Right">
+                <TextBox.InputBindings>
+                    <KeyBinding Key="Up" Command="{Binding IncreaseIdleResetTimeCommand}"/>
+                    <KeyBinding Key="Down" Command="{Binding DecreaseIdleResetTimeCommand}"/>
+                </TextBox.InputBindings>
+            </TextBox>
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
                     <controls:ImageButton Image="/Resources/Icons/UpArrow.png" Command="{Binding IncreaseIdleResetTimeCommand}"/>
                     <controls:ImageButton Image="/Resources/Icons/DownArrow.png" Command="{Binding DecreaseIdleResetTimeCommand}"/>
                 </StackPanel>
