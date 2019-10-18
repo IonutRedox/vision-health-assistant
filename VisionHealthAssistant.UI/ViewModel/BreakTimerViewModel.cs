@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.Win32;
+using System;
 using System.IO;
 using System.Media;
 using System.Windows.Input;
@@ -24,6 +25,7 @@ namespace VisionHealthAssistant.UI.ViewModel
 
         private bool _isNotRunning;
         private bool _isPaused;
+        private bool _isPowerModeChanged;
 
         #endregion
 
@@ -37,6 +39,7 @@ namespace VisionHealthAssistant.UI.ViewModel
             Type = Pages.BreakTimer;
             InitializeCommands();
             InitializeTimer();
+            AttachEvents();
             BreakTimer = new BreakTimer { Frequency = 0,Length = 0,IdleResetTime = 0 };
             RemainingTime = BreakTimerHelper.GetFormattedTimeFromMinutes(BreakTimer.Frequency);
             _soundPlayer = new SoundPlayer(AlertSoundPath);
@@ -177,6 +180,48 @@ namespace VisionHealthAssistant.UI.ViewModel
         }
 
         /// <summary>
+        /// Attach to the events.
+        /// </summary>
+        protected override void AttachEvents()
+        {
+            SystemEvents.PowerModeChanged += OnPowerModeChanged;
+        }
+
+
+        /// <summary>
+        /// Removes the events.
+        /// </summary>
+        protected override void RemoveEvents()
+        {
+            SystemEvents.PowerModeChanged -= OnPowerModeChanged;
+        }
+
+        /// <summary>
+        /// When power mode changed.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void OnPowerModeChanged(object sender,PowerModeChangedEventArgs e)
+        {
+            switch(e.Mode) {
+                case PowerModes.Suspend:
+                if(_timer.IsEnabled) {
+                    StopTimerCommand.Execute(null);
+                    _isPowerModeChanged = true;
+                }
+                break;
+                case PowerModes.Resume:
+                if(_isPowerModeChanged) {
+                    StartTimerCommand.Execute(null);
+                    _isPowerModeChanged = false;
+                    CommandManager.InvalidateRequerySuggested();
+                }
+                break;
+            }
+        }
+
+
+        /// <summary>
         /// Timer tick event.
         /// </summary>
         /// <param name="sender"></param>
@@ -202,7 +247,6 @@ namespace VisionHealthAssistant.UI.ViewModel
             _timer.Start();
             IsNotRunning = false;
             _isPaused = false;
-            BreakTimer.IsIdleResetActive = false;
         }
 
         /// <summary>
@@ -235,7 +279,6 @@ namespace VisionHealthAssistant.UI.ViewModel
             _counter = 0;
             IsNotRunning = true;
             _isPaused = false;
-            BreakTimer.IsIdleResetActive = true;
             CommandManager.InvalidateRequerySuggested();
         }
 

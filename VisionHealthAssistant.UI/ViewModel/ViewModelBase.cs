@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using System;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using VisionHealthAssistant.Shared;
 
@@ -21,6 +22,22 @@ namespace VisionHealthAssistant.UI.ViewModel
         /// Initializes commands.
         /// </summary>
         protected abstract void InitializeCommands();
+
+        /// <summary>
+        /// Attaches to events.
+        /// </summary>
+        protected virtual void AttachEvents()
+        {
+            throw new NotImplementedException();
+        }
+
+        /// <summary>
+        /// Removes all attached events.
+        /// </summary>
+        protected virtual void RemoveEvents()
+        {
+            throw new NotImplementedException();
+        }
 
         #endregion
 

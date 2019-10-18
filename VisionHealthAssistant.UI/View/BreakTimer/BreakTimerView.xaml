@@ -74,7 +74,7 @@
 
             <Label Grid.Row="7" Grid.Column="0" Content="Reset when idle for"/>
             <StackPanel Grid.Row="7" Grid.Column="1" Orientation="Horizontal" IsEnabled="{Binding BreakTimer.IsIdleResetActive,Mode=OneWay}">
-            <TextBox Text="{Binding BreakTimer.IdleResetTime,UpdateSourceTrigger=PropertyChanged,Converter={StaticResource NumericTextBoxConverter}}" Width="40" Height="20" helper:TextBoxHelper.OnlyInteger="True" HorizontalContentAlignment="Right">
+            <TextBox Text="{Binding BreakTimer.IdleResetTime,UpdateSourceTrigger=PropertyChanged,Converter={StaticResource NumericTextBoxConverter}}" IsEnabled="{Binding IsNotRunning,Mode=OneWay,UpdateSourceTrigger=PropertyChanged}" Width="40" Height="20" helper:TextBoxHelper.OnlyInteger="True" HorizontalContentAlignment="Right">
                 <TextBox.InputBindings>
                     <KeyBinding Key="Up" Command="{Binding IncreaseIdleResetTimeCommand}"/>
                     <KeyBinding Key="Down" Command="{Binding DecreaseIdleResetTimeCommand}"/>
