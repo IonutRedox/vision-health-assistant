@@ -73,12 +73,16 @@
     <Compile Include="Helper\UserIdleHelper.cs" />
     <Compile Include="Helper\WindowHelper.cs" />
     <Compile Include="Model\BreakTimer.cs" />
+    <Compile Include="ViewModel\BreakNotifierViewModel.cs" />
     <Compile Include="ViewModel\NewsViewModel.cs" />
     <Compile Include="ViewModel\RelaxationViewModel.cs" />
     <Compile Include="ViewModel\SettingsViewModel.cs" />
     <Compile Include="ViewModel\AboutViewModel.cs" />
     <Compile Include="View\AboutView.xaml.cs">
       <DependentUpon>AboutView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\BreakTimer\BreakNotifierView.xaml.cs">
+      <DependentUpon>BreakNotifierView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\News\NewsView.xaml.cs">
       <DependentUpon>NewsView.xaml</DependentUpon>
@@ -90,6 +94,10 @@
       <DependentUpon>SetttingsView.xaml</DependentUpon>
     </Compile>
     <Page Include="View\AboutView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\BreakTimer\BreakNotifierView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -242,6 +242,33 @@
             </Style>
         </Style.Resources>
     </Style>
+
+    <Style x:Key="BreakNotifierViewStyle" TargetType="{x:Type Window}">
+        <Setter Property="Background" Value="{StaticResource PageColor}"/>
+        <Style.Resources>
+            <Style TargetType="{x:Type Button}" BasedOn="{StaticResource VHAButtonStyle}"/>
+            <Style TargetType="{x:Type TextBlock}">
+                <Setter Property="FontSize" Value="20"/>
+                <Setter Property="HorizontalAlignment" Value="Center"/>
+                <Setter Property="VerticalAlignment" Value="Center"/>
+            </Style>
+            <Style TargetType="{x:Type Label}">
+                <Setter Property="Foreground" Value="White"/>
+                <Setter Property="Background" Value="{StaticResource NavButtonColor}"/>
+                <Setter Property="FontSize" Value="12"/>
+                <Setter Property="VerticalContentAlignment" Value="Center"/>
+            </Style>
+            <Style TargetType="{x:Type Image}">
+                <Setter Property="Width" Value="18"/>
+                <Setter Property="Height" Value="18"/>
+                <Setter Property="UseLayoutRounding" Value="True"/>
+                <Setter Property="SnapsToDevicePixels" Value="True"/>
+                <Setter Property="RenderOptions.BitmapScalingMode" Value="NearestNeighbor"/>
+                <Setter Property="HorizontalAlignment" Value="Left"/>
+            </Style>
+        </Style.Resources>
+    </Style>
+   
     
     <Style x:Key="UpDownButtonStyle" TargetType="{x:Type controls:ImageButton}">
         <Setter Property="Padding" Value="0"/>

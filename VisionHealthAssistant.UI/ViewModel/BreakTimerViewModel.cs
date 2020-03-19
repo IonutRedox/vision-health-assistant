@@ -8,6 +8,7 @@ using VisionHealthAssistant.Shared;
 using VisionHealthAssistant.UI.Helper;
 using VisionHealthAssistant.UI.Model;
 using VisionHealthAssistant.UI.View;
+using VisionHealthAssistant.UI.View.BreakTimer;
 
 namespace VisionHealthAssistant.UI.ViewModel
 {
@@ -233,10 +234,10 @@ namespace VisionHealthAssistant.UI.ViewModel
             RemainingTime = BreakTimerHelper.GetFormattedTimeFromSeconds(seconds);
             if(UserIdleHelper.GetLastInputTime() == BreakTimer.IdleResetTime * 60 && BreakTimer.IsIdleResetActive) {
                 StopTimerCommand.Execute(null);
-            } else if(seconds == 0) {
+            } else if(seconds == 4) {
                 StopTimerCommand.Execute(null);
-                StartRelaxation();
-            }
+                NotifyNextBreak(seconds);
+            } 
         }
 
         /// <summary>
@@ -333,6 +334,25 @@ namespace VisionHealthAssistant.UI.ViewModel
                 StartTimer();
             }
             PlaySoundIfNeeded();
+        }
+
+        /// <summary>
+        ///     Notify the user about the next break.
+        /// </summary>
+        /// <param name="seconds"></param>
+        private void NotifyNextBreak(int seconds)
+        {
+            BreakNotifierViewModel breakNotifierViewModel = new BreakNotifierViewModel(seconds);
+            BreakNotifierView breakNotifierView = new BreakNotifierView { DataContext = breakNotifierViewModel };
+            if(breakNotifierView.ShowDialog() == true) {
+                if(breakNotifierViewModel.IsManuallyStopped) {
+                    return;
+                } else if(breakNotifierViewModel.IsNextBreakSkipped) {
+                    StartTimerCommand.Execute(null);
+                } else {
+                    StartRelaxation();
+                }
+            }
         }
 
         /// <summary>
