@@ -54,7 +54,7 @@ namespace VisionHealthAssistant.UI.ViewModel
         /// <summary>
         /// Gets the page info.
         /// </summary>
-        public string Info { get; } = "    Break timer notifies you to take regular breaks at specified time intervals to maintain eyes health.Please consider the minute as unit of measurement.";
+        public string Info { get; } = "Break timer notifies you to take regular breaks at specified time intervals to maintain eyes health.";
 
         /// <summary>
         /// Gets the break timer.
