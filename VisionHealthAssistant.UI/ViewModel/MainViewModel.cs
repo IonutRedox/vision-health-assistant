@@ -118,6 +118,7 @@ namespace VisionHealthAssistant.UI.ViewModel
         {
             if(window != null) {
                 window.Close();
+                SaveViewModelConfigurations();
             }
         }
 
@@ -127,6 +128,17 @@ namespace VisionHealthAssistant.UI.ViewModel
         private void MinimizeWindow()
         {
             WindowState = WindowState.Minimized;
+        }
+
+        /// <summary>
+        ///     Save user configurations per viewmodels.
+        /// </summary>
+        private void SaveViewModelConfigurations()
+        {
+            BreakTimerViewModel breakTimerViewModel =(BreakTimerViewModel)_pageViewModels.Single(vm => vm is BreakTimerViewModel);
+            if(breakTimerViewModel != null) {
+                breakTimerViewModel.SaveUserConfiguration();
+            }
         }
 
 

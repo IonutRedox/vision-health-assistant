@@ -6,13 +6,14 @@ using System.Windows.Input;
 using System.Windows.Threading;
 using VisionHealthAssistant.Shared;
 using VisionHealthAssistant.UI.Helper;
+using VisionHealthAssistant.UI.Managers;
 using VisionHealthAssistant.UI.Model;
 using VisionHealthAssistant.UI.View;
 using VisionHealthAssistant.UI.View.BreakTimer;
 
 namespace VisionHealthAssistant.UI.ViewModel
 {
-    public class BreakTimerViewModel : ViewModelBase
+    public class BreakTimerViewModel : ViewModelBase,IUserConfiguration
     {
         #region Fields 
 
@@ -41,7 +42,7 @@ namespace VisionHealthAssistant.UI.ViewModel
             InitializeCommands();
             InitializeTimer();
             AttachEvents();
-            BreakTimer = new BreakTimer { Frequency = 0,Length = 0,IdleResetTime = 0 };
+            LoadUserConfiguration();
             RemainingTime = BreakTimerHelper.GetFormattedTimeFromMinutes(BreakTimer.Frequency);
             _soundPlayer = new SoundPlayer(AlertSoundPath);
             IsNotRunning = true;
@@ -59,7 +60,7 @@ namespace VisionHealthAssistant.UI.ViewModel
         /// <summary>
         /// Gets the break timer.
         /// </summary>
-        public BreakTimer BreakTimer { get; }
+        public BreakTimer BreakTimer { get; private set; }
 
 
         /// <summary>
@@ -362,6 +363,28 @@ namespace VisionHealthAssistant.UI.ViewModel
         {
             if(BreakTimer.IsPlaySoundActive) {
                 _soundPlayer.Play();
+            }
+        }
+
+        /// <summary>
+        ///     Save user configuration to disk.
+        /// </summary>
+        public void SaveUserConfiguration()
+        {
+            UserConfigurationManager.Save(BreakTimer);
+        }
+
+        /// <summary>
+        ///     Load user configuration from disk.
+        /// </summary>
+        public void LoadUserConfiguration()
+        {
+            BreakTimer configuration = UserConfigurationManager.Load<BreakTimer>();
+            if(configuration == null) {
+                BreakTimer defaultConfiguration = new BreakTimer { Frequency = 0,Length = 0,IdleResetTime = 0 };
+                BreakTimer = defaultConfiguration;
+            } else {
+                BreakTimer = configuration;
             }
         }
 
