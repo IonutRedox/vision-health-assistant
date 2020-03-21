@@ -116,6 +116,16 @@ namespace VisionHealthAssistant.UI.ViewModel
         public RelayCommand DecreaseLengthCommand { get; private set; }
 
         /// <summary>
+        /// Increases next break alert time.
+        /// </summary>
+        public RelayCommand IncreaseNextBreakAlertCommand { get; private set; }
+        
+        /// <summary>
+        /// Decreases next break alert time.
+        /// </summary>
+        public RelayCommand DecreaseNextBreakAlertCommand { get; private set; }
+
+        /// <summary>
         /// Increases the break timer idle reset time.
         /// </summary>
         public RelayCommand IncreaseIdleResetTimeCommand { get; private set; }
@@ -163,6 +173,10 @@ namespace VisionHealthAssistant.UI.ViewModel
                 BreakTimer.Length++;
             },p => IsNotRunning);
 
+            IncreaseNextBreakAlertCommand = new RelayCommand(p => {
+                BreakTimer.NextBreakAlert++;
+            },p => IsNotRunning);
+
             IncreaseIdleResetTimeCommand = new RelayCommand(p => {
                 BreakTimer.IdleResetTime++;
             },p => IsNotRunning);
@@ -175,6 +189,10 @@ namespace VisionHealthAssistant.UI.ViewModel
             DecreaseLengthCommand = new RelayCommand(p => {
                 BreakTimer.Length--;
             },p => BreakTimer.Length > 0 && IsNotRunning);
+
+            DecreaseNextBreakAlertCommand = new RelayCommand(p => {
+                BreakTimer.NextBreakAlert--;
+            },p => BreakTimer.NextBreakAlert > 0 && IsNotRunning);
 
             DecreaseIdleResetTimeCommand = new RelayCommand(p => {
                 BreakTimer.IdleResetTime--;
@@ -235,10 +253,14 @@ namespace VisionHealthAssistant.UI.ViewModel
             RemainingTime = BreakTimerHelper.GetFormattedTimeFromSeconds(seconds);
             if(UserIdleHelper.GetLastInputTime() == BreakTimer.IdleResetTime * 60 && BreakTimer.IsIdleResetActive) {
                 StopTimerCommand.Execute(null);
-            } else if(seconds == 4) {
+            } else if(seconds == BreakTimer.NextBreakAlert) {
                 StopTimerCommand.Execute(null);
-                NotifyNextBreak(seconds);
-            } 
+                if(BreakTimer.NextBreakAlert != 0) {
+                    NotifyNextBreak(BreakTimer.NextBreakAlert);
+                } else {
+                    StartRelaxation();
+                }
+            }
         }
 
         /// <summary>

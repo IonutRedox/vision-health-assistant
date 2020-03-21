@@ -9,6 +9,7 @@ namespace VisionHealthAssistant.UI.Model
 
         private int _frequency;
         private int _length;
+        private int _nextBreakAlert;
         private int _idleResetTime;
         private string _message;
         private bool _isPlaySoundActive;
@@ -55,6 +56,20 @@ namespace VisionHealthAssistant.UI.Model
             set {
                 if(_idleResetTime != value) {
                     _idleResetTime = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        /// <summary>
+        /// Gets or sets next break alert time.
+        /// </summary>
+        public int NextBreakAlert
+        {
+            get { return _nextBreakAlert; }
+            set {
+                if(_nextBreakAlert != value) {
+                    _nextBreakAlert = value;
                     OnPropertyChanged();
                 }
             }
