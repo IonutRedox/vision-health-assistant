@@ -350,7 +350,7 @@ namespace VisionHealthAssistant.UI.ViewModel
         /// </summary>
         private void StartRelaxation()
         {
-            RelaxationViewModel relaxationViewModel = new RelaxationViewModel(BreakTimer.Message,BreakTimer.Length);
+            RelaxationViewModel relaxationViewModel = new RelaxationViewModel(BreakTimer.Message,BreakTimer.Length,BreakTimer.AllowStopBreak);
             RelaxationView relaxationView = new RelaxationView { DataContext = relaxationViewModel };
             PlaySoundIfNeeded();
             if(relaxationView.ShowDialog() == true && !relaxationViewModel.IsManuallyStopped) {

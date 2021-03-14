@@ -7,7 +7,7 @@
          xmlns:controls="clr-namespace:VisionHealthAssistant.UI.CustomControls"
         xmlns:vm="clr-namespace:VisionHealthAssistant.UI.ViewModel"
         mc:Ignorable="d"
-    x:Name="MainView" WindowState="{Binding WindowState}"  Style="{StaticResource MainWindowStyle}"  Width="800" Height="400" Top="0" Left="0" MinWidth="800" MinHeight="400" Icon="/Resources/Icons/VHAIcon-32px.ico" AllowsTransparency="True" ResizeMode="CanResizeWithGrip" Title="{Binding AppName}"  WindowStartupLocation="CenterScreen"  WindowStyle="None">
+    x:Name="MainView" WindowState="{Binding WindowState}"  Style="{StaticResource MainWindowStyle}"  Width="800" Height="400" Top="0" Left="0" MinWidth="800" MinHeight="400" Icon="/Resources/Icons/VHAIcon-32px.ico" AllowsTransparency="True"  Title="{Binding AppName}"  WindowStartupLocation="CenterScreen"  WindowStyle="None">
     <Window.Resources>
         <ResourceDictionary>
             <DataTemplate DataType="{x:Type vm:NewsViewModel}">

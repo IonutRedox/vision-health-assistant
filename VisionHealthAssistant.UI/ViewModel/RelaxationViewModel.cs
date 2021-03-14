@@ -13,12 +13,13 @@ namespace VisionHealthAssistant.UI.ViewModel
         private readonly int _duration;
         private string _remainingTime;
         private bool? _dialogResult;
+        private readonly bool _allowStopBreak;
 
         #endregion
 
         #region Constructor
 
-        public RelaxationViewModel(string message,int duration)
+        public RelaxationViewModel(string message,int duration, bool allowStopBreak)
         {
             if(string.IsNullOrWhiteSpace(message)) {
                 throw new ArgumentNullException(message);
@@ -31,6 +32,7 @@ namespace VisionHealthAssistant.UI.ViewModel
 
             Message = message;
             _duration = duration;
+            _allowStopBreak = allowStopBreak;
             RemainingTime = BreakTimerHelper.GetFormattedTimeFromMinutes(duration);
             InitializeTimer();
             InitializeCommands();
@@ -108,7 +110,7 @@ namespace VisionHealthAssistant.UI.ViewModel
         /// <returns></returns>
         private bool CanStopTimer()
         {
-            return true;
+            return _allowStopBreak;
         }
 
         /// <summary>

@@ -14,6 +14,7 @@ namespace VisionHealthAssistant.UI.Model
         private string _message;
         private bool _isPlaySoundActive;
         private bool _isIdleResetActive;
+        private bool _allowStopBreak;
 
         #endregion
 
@@ -117,6 +118,19 @@ namespace VisionHealthAssistant.UI.Model
             }
         }
 
+        /// <summary>
+        /// Gets or sets break stop permission
+        /// </summary>
+        public bool AllowStopBreak
+        {
+            get { return _allowStopBreak; }
+            set {
+                if(_allowStopBreak != value) {
+                    _allowStopBreak = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
         #endregion
 
         #region INotifyPropertyChanged
